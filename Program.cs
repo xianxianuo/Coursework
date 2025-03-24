@@ -1,4 +1,6 @@
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -6,20 +8,31 @@ namespace CurseWork
 {
     internal static class Program
     {
-
         [STAThread]
         static void Main()
         {
-            ApplicationConfiguration.Initialize();
+            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+            string folderPath = Path.Combine(projectDirectory, "FilesToRead");
+            string filePath = Path.Combine(folderPath, "HotelData.json");
 
-            //if(ApplicationConfiguration.IsFirstRun)
-            //{
-            //    Application.Run(new );
-            //}
-            //else
-            //{
-            //    Application.Run(new );
-            //}
+            string content = File.ReadAllText(filePath);
+
+            if (File.Exists(filePath))
+            {
+                if (string.IsNullOrWhiteSpace(content))
+                {
+                    Application.Run(new fAddHotel());
+                }
+                else
+                {
+                    MessageBox.Show("Hotel data loaded.", "File Already Exists", MessageBoxButtons.OK);
+                    Application.Run(new fAdministration());
+                }
+            }
+            else
+            {
+                MessageBox.Show("The file 'HotelData.json' does not exist. Please create the file first.", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

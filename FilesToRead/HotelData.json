@@ -1,1 +1,64 @@
-﻿
+{
+  "Name": "xdgdgdsgdsgd",
+  "Address": "fdsfds",
+  "NumberOfRooms": 8,
+  "Rooms": [
+    {
+      "RoomNumber": 101,
+      "Type": "Lux",
+      "Price": 342,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 102,
+      "Type": "Simple",
+      "Price": 34234,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 103,
+      "Type": "Simple",
+      "Price": 342,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 104,
+      "Type": "VIP",
+      "Price": 546,
+      "Capacity": 2,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 105,
+      "Type": "Simple",
+      "Price": 345,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 106,
+      "Type": "VIP",
+      "Price": 324,
+      "Capacity": 2,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 107,
+      "Type": "Simple",
+      "Price": 432,
+      "Capacity": 2,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 108,
+      "Type": "Simple",
+      "Price": 324,
+      "Capacity": 1,
+      "IsFree": true
+    }
+  ],
+  "Clients": []
+}
