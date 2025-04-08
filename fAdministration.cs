@@ -12,36 +12,55 @@ namespace CurseWork
 {
     public partial class fAdministration : Form
     {
+        private Hotel hotel = Hotel.LoadFromFile();
+        private int CurrentOccupied;
+        private int CurrentFree;
+
         public fAdministration()
         {
             InitializeComponent();
+            CurrentFree = hotel.NumberOfRooms;
+            CurrentOccupied = 0;
+            foreach (Room i in hotel.Rooms)
+            {
+                if (!i.IsFree)
+                {
+                    CurrentOccupied++;
+                    CurrentFree--;
+                }
+            }
+            lbCurrentOccupiedRooms.Text = "Occupied rooms: " + CurrentOccupied.ToString();
+            lbCurrentFreeRooms.Text = "Free rooms: " + CurrentFree.ToString();
         }
-        private void buttonClose_Click(object sender, EventArgs e)
+
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
-        private void btnAddBooking_Click(object sender, EventArgs e)
-        {
-            fAddBooking fAddBooking = new fAddBooking();
-            fAddBooking.ShowDialog();
-        }
-        private void btnBookingInfo_Click(object sender, EventArgs e)
-        {
-            fChangeBookingInfo fBookingInfo = new fChangeBookingInfo();
-            fBookingInfo.ShowDialog();
-            this.Hide();
-        }
-        private void btnRoomInfo_Click(object sender, EventArgs e)
-        {
-            fChangeRoomInfo fRoomInfo = new fChangeRoomInfo();
-            fRoomInfo.ShowDialog();
-            this.Hide();
-        }
+
         private void btnHotelInfo_Click(object sender, EventArgs e)
         {
             fHotelInfo fHotel = new fHotelInfo();
-            fHotel.ShowDialog();
+            fHotel.Show();
+        }
+
+        private void btnSearchBooking_Click(object sender, EventArgs e)
+        {
+            fSearchBooking fSearch = new fSearchBooking();
+            fSearch.Show();
+        }
+
+        private void btnChangeBooking_Click(object sender, EventArgs e)
+        {
             this.Hide();
+            fChangeBooking fChange = new fChangeBooking();
+            fChange.Show();
+        }
+
+        private void btnAddBooking_Click(object sender, EventArgs e)
+        {
+            fAddBooking fAdd = new fAddBooking();
+            fAdd.Show();
         }
     }
 }

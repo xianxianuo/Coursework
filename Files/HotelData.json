@@ -1,0 +1,78 @@
+{
+  "Name": "xcvx",
+  "Address": "sdffds",
+  "NumberOfRooms": 10,
+  "Rooms": [
+    {
+      "RoomNumber": 101,
+      "Type": "",
+      "Price": 173,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 102,
+      "Type": "",
+      "Price": 182,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 103,
+      "Type": "",
+      "Price": 900,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 104,
+      "Type": "",
+      "Price": 369,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 105,
+      "Type": "",
+      "Price": 549,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 106,
+      "Type": "",
+      "Price": 328,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 107,
+      "Type": "",
+      "Price": 138,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 108,
+      "Type": "",
+      "Price": 861,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 109,
+      "Type": "",
+      "Price": 929,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 110,
+      "Type": "",
+      "Price": 556,
+      "Capacity": 1,
+      "IsFree": true
+    }
+  ],
+  "Clients": []
+}

@@ -14,7 +14,16 @@ namespace CurseWork
     {
         private Hotel hotel;
         private List<Room> rooms;
-        private List<string> roomTypes = new List<string> { "Simple", "Lux", "VIP" };
+        private List<string> roomsType = new List<string>
+        {
+            "Single Room",
+            "Double Room",
+            "Triple Room",
+            "Quad Room",
+            "Suite",
+            "Family Room",
+            "Presidential Suite",
+        };
         public fEndOfSetup()
         {
             InitializeComponent();
@@ -29,27 +38,25 @@ namespace CurseWork
             dataTable.Columns.Add("Room Number", typeof(int));
             dataTable.Columns.Add("Type", typeof(string));
             dataTable.Columns.Add("Price", typeof(decimal));
-            dataTable.Columns.Add("Capacity", typeof(int));
-            dataTable.Columns.Add("Is Busy", typeof(bool));
 
-            for (int i = 0; i < rooms.Count; i++)
+            foreach (Room room in rooms)
             {
-                Room room = rooms[i];
-                dataTable.Rows.Add(room.RoomNumber, room.Type, room.Price, room.Capacity, !room.IsFree);
+                dataTable.Rows.Add(room.RoomNumber, room.Type, room.Price);
             }
 
             dgRoomFill.DataSource = dataTable;
 
             DataGridViewComboBoxColumn comboBoxColumn = new DataGridViewComboBoxColumn();
             comboBoxColumn.HeaderText = "Type";
+            comboBoxColumn.DataSource = roomsType;
             comboBoxColumn.DataPropertyName = "Type";
-            comboBoxColumn.DataSource = roomTypes;
             comboBoxColumn.ValueType = typeof(string);
+            comboBoxColumn.DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton;
+            comboBoxColumn.DefaultCellStyle.NullValue = "Single Room"; // Set default value
 
-            dgRoomFill.Columns.RemoveAt(1);
+            dgRoomFill.Columns.Remove("Type");
             dgRoomFill.Columns.Insert(1, comboBoxColumn);
         }
-
         private void buttonClose_Click(object sender, EventArgs e)
         {
             string message = "Do you want to close this window? Information will be lost.";
@@ -58,7 +65,18 @@ namespace CurseWork
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Yes)
             {
-                this.Close();
+                Application.Exit();
+                hotel.DeleteFileInfo();
+            }
+        }
+        //Random btn DELETE BEFORE RELEASE!!!
+        private void btnRandom_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+            for (int i = 0; i < dgRoomFill.Rows.Count - 1; i++)
+            {
+                int randomPrice = random.Next(100, 1000);
+                dgRoomFill.Rows[i].Cells[2].Value = randomPrice;
             }
         }
         private void buttonStart_Click(object sender, EventArgs e)
@@ -70,25 +88,45 @@ namespace CurseWork
             {
                 Room room = new Room { };
                 room.RoomNumber = Convert.ToInt32(dgRoomFill.Rows[i].Cells[0].Value);
-                room.Type = dgRoomFill.Rows[i].Cells[1].Value?.ToString() ?? "Simple";
+                room.Type = dgRoomFill.Rows[i].Cells[1].Value.ToString();
+                room.IsFree = true;
                 if (Convert.ToInt32(dgRoomFill.Rows[i].Cells[2].Value) == 0)
                 {
-                    MessageBox.Show("Price cannot be 0.!");
+                    MessageBox.Show("Price cannot be 0!");
                     return;
                 }
                 else
                 {
                     room.Price = Convert.ToDecimal(dgRoomFill.Rows[i].Cells[2].Value);
                 }
-                if (Convert.ToInt16(dgRoomFill.Rows[i].Cells[3].Value) == 0)
+                switch (room.Type)
                 {
-                    MessageBox.Show("Capacity cannot be 0!");
+                    case "Single Room":
+                        room.Capacity = 1;
+                        break;
+                    case "Double Room":
+                        room.Capacity = 2;
+                        break;
+                    case "Triple Room":
+                        room.Capacity = 3;
+                        break;
+                    case "Quad Room":
+                        room.Capacity = 4;
+                        break;
+                    case "Suite":
+                        room.Capacity = 2;
+                        break;
+                    case "Family Room":
+                        room.Capacity = 4;
+                        break;
+                    case "Presidential Suite":
+                        room.Capacity = 2;
+                        break;
+                    default:
+                        room.Capacity = 1;
+                        break;
                 }
-                else
-                {
-                    room.Capacity = Convert.ToInt16(dgRoomFill.Rows[i].Cells[3].Value);
-                }
-                room.IsFree = !Convert.ToBoolean(dgRoomFill.Rows[i].Cells[4].Value);
+
                 hotel.Rooms.Add(room);
             }
 

@@ -29,44 +29,44 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fAdministration));
-            btnBookingInfo = new Button();
-            lbCurrentOccupiedRooms = new Label();
+            btnSearchBooking = new Button();
+            lbCurrentFreeRooms = new Label();
             pictureBox1 = new PictureBox();
-            labelNameTitle = new Label();
             labelTitle = new Label();
-            buttonClose = new Button();
-            label1 = new Label();
+            title = new Label();
+            btnClose = new Button();
+            lbCurrentOccupiedRooms = new Label();
             btnHotelInfo = new Button();
             btnAddBooking = new Button();
-            btnRoomInfo = new Button();
+            btnChangeBooking = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // btnBookingInfo
+            // btnSearchBooking
             // 
-            btnBookingInfo.BackgroundImage = (Image)resources.GetObject("btnBookingInfo.BackgroundImage");
-            btnBookingInfo.BackgroundImageLayout = ImageLayout.Stretch;
-            btnBookingInfo.FlatStyle = FlatStyle.Flat;
-            btnBookingInfo.Font = new Font("Orange Kid", 15F, FontStyle.Bold);
-            btnBookingInfo.ForeColor = SystemColors.ButtonHighlight;
-            btnBookingInfo.Location = new Point(64, 730);
-            btnBookingInfo.Name = "btnBookingInfo";
-            btnBookingInfo.Size = new Size(300, 40);
-            btnBookingInfo.TabIndex = 2;
-            btnBookingInfo.Text = "BOOKING INFORMATION";
-            btnBookingInfo.UseVisualStyleBackColor = true;
-            btnBookingInfo.Click += btnBookingInfo_Click;
+            btnSearchBooking.BackgroundImage = (Image)resources.GetObject("btnSearchBooking.BackgroundImage");
+            btnSearchBooking.BackgroundImageLayout = ImageLayout.Stretch;
+            btnSearchBooking.FlatStyle = FlatStyle.Flat;
+            btnSearchBooking.Font = new Font("Orange Kid", 20F);
+            btnSearchBooking.ForeColor = SystemColors.ButtonHighlight;
+            btnSearchBooking.Location = new Point(64, 402);
+            btnSearchBooking.Name = "btnSearchBooking";
+            btnSearchBooking.Size = new Size(400, 50);
+            btnSearchBooking.TabIndex = 2;
+            btnSearchBooking.Text = "SEARCH BOOKING";
+            btnSearchBooking.UseVisualStyleBackColor = true;
+            btnSearchBooking.Click += btnSearchBooking_Click;
             // 
-            // lbCurrentOccupiedRooms
+            // lbCurrentFreeRooms
             // 
-            lbCurrentOccupiedRooms.AutoSize = true;
-            lbCurrentOccupiedRooms.BackColor = Color.Transparent;
-            lbCurrentOccupiedRooms.Font = new Font("Orange Kid", 25F);
-            lbCurrentOccupiedRooms.Location = new Point(81, 224);
-            lbCurrentOccupiedRooms.Name = "lbCurrentOccupiedRooms";
-            lbCurrentOccupiedRooms.Size = new Size(352, 50);
-            lbCurrentOccupiedRooms.TabIndex = 6;
-            lbCurrentOccupiedRooms.Text = "Current occupied rooms:";
+            lbCurrentFreeRooms.AutoSize = true;
+            lbCurrentFreeRooms.BackColor = Color.Transparent;
+            lbCurrentFreeRooms.Font = new Font("Orange Kid", 25F);
+            lbCurrentFreeRooms.Location = new Point(81, 224);
+            lbCurrentFreeRooms.Name = "lbCurrentFreeRooms";
+            lbCurrentFreeRooms.Size = new Size(289, 50);
+            lbCurrentFreeRooms.TabIndex = 6;
+            lbCurrentFreeRooms.Text = "Current free rooms:";
             // 
             // pictureBox1
             // 
@@ -76,51 +76,51 @@
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
             // 
-            // labelNameTitle
-            // 
-            labelNameTitle.AutoSize = true;
-            labelNameTitle.BackColor = Color.Transparent;
-            labelNameTitle.Font = new Font("Orange Kid", 60F);
-            labelNameTitle.Location = new Point(40, 95);
-            labelNameTitle.Name = "labelNameTitle";
-            labelNameTitle.Size = new Size(393, 120);
-            labelNameTitle.TabIndex = 11;
-            labelNameTitle.Text = "WELCOME!";
-            // 
             // labelTitle
             // 
             labelTitle.AutoSize = true;
             labelTitle.BackColor = Color.Transparent;
-            labelTitle.Font = new Font("Orange Kid", 25F);
-            labelTitle.ForeColor = Color.White;
-            labelTitle.Location = new Point(16, 13);
+            labelTitle.Font = new Font("Orange Kid", 60F);
+            labelTitle.Location = new Point(40, 95);
             labelTitle.Name = "labelTitle";
-            labelTitle.Size = new Size(182, 50);
-            labelTitle.TabIndex = 10;
-            labelTitle.Text = "END SET UP";
+            labelTitle.Size = new Size(393, 120);
+            labelTitle.TabIndex = 11;
+            labelTitle.Text = "WELCOME!";
             // 
-            // buttonClose
+            // title
             // 
-            buttonClose.BackgroundImage = (Image)resources.GetObject("buttonClose.BackgroundImage");
-            buttonClose.BackgroundImageLayout = ImageLayout.Stretch;
-            buttonClose.FlatStyle = FlatStyle.Flat;
-            buttonClose.Location = new Point(1118, 19);
-            buttonClose.Name = "buttonClose";
-            buttonClose.Size = new Size(40, 40);
-            buttonClose.TabIndex = 9;
-            buttonClose.UseVisualStyleBackColor = true;
-            buttonClose.Click += buttonClose_Click;
+            title.AutoSize = true;
+            title.BackColor = Color.Transparent;
+            title.Font = new Font("Orange Kid", 25F);
+            title.ForeColor = Color.White;
+            title.Location = new Point(15, 13);
+            title.Name = "title";
+            title.Size = new Size(257, 50);
+            title.TabIndex = 10;
+            title.Text = "ADMINISTRATION";
             // 
-            // label1
+            // btnClose
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Orange Kid", 25F);
-            label1.Location = new Point(81, 274);
-            label1.Name = "label1";
-            label1.Size = new Size(352, 50);
-            label1.TabIndex = 12;
-            label1.Text = "Current occupied rooms:";
+            btnClose.BackgroundImage = (Image)resources.GetObject("btnClose.BackgroundImage");
+            btnClose.BackgroundImageLayout = ImageLayout.Stretch;
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.Location = new Point(1118, 19);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(40, 40);
+            btnClose.TabIndex = 9;
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
+            // 
+            // lbCurrentOccupiedRooms
+            // 
+            lbCurrentOccupiedRooms.AutoSize = true;
+            lbCurrentOccupiedRooms.BackColor = Color.Transparent;
+            lbCurrentOccupiedRooms.Font = new Font("Orange Kid", 25F);
+            lbCurrentOccupiedRooms.Location = new Point(81, 274);
+            lbCurrentOccupiedRooms.Name = "lbCurrentOccupiedRooms";
+            lbCurrentOccupiedRooms.Size = new Size(352, 50);
+            lbCurrentOccupiedRooms.TabIndex = 12;
+            lbCurrentOccupiedRooms.Text = "Current occupied rooms:";
             // 
             // btnHotelInfo
             // 
@@ -129,7 +129,7 @@
             btnHotelInfo.FlatStyle = FlatStyle.Flat;
             btnHotelInfo.Font = new Font("Orange Kid", 15F, FontStyle.Bold);
             btnHotelInfo.ForeColor = SystemColors.ButtonHighlight;
-            btnHotelInfo.Location = new Point(831, 730);
+            btnHotelInfo.Location = new Point(822, 729);
             btnHotelInfo.Name = "btnHotelInfo";
             btnHotelInfo.Size = new Size(300, 40);
             btnHotelInfo.TabIndex = 13;
@@ -152,20 +152,20 @@
             btnAddBooking.UseVisualStyleBackColor = true;
             btnAddBooking.Click += btnAddBooking_Click;
             // 
-            // btnRoomInfo
+            // btnChangeBooking
             // 
-            btnRoomInfo.BackgroundImage = (Image)resources.GetObject("btnRoomInfo.BackgroundImage");
-            btnRoomInfo.BackgroundImageLayout = ImageLayout.Stretch;
-            btnRoomInfo.FlatStyle = FlatStyle.Flat;
-            btnRoomInfo.Font = new Font("Orange Kid", 15F, FontStyle.Bold);
-            btnRoomInfo.ForeColor = SystemColors.ButtonHighlight;
-            btnRoomInfo.Location = new Point(454, 730);
-            btnRoomInfo.Name = "btnRoomInfo";
-            btnRoomInfo.Size = new Size(300, 40);
-            btnRoomInfo.TabIndex = 16;
-            btnRoomInfo.Text = "ROOM INFORMATION";
-            btnRoomInfo.UseVisualStyleBackColor = true;
-            btnRoomInfo.Click += btnRoomInfo_Click;
+            btnChangeBooking.BackgroundImage = (Image)resources.GetObject("btnChangeBooking.BackgroundImage");
+            btnChangeBooking.BackgroundImageLayout = ImageLayout.Stretch;
+            btnChangeBooking.FlatStyle = FlatStyle.Flat;
+            btnChangeBooking.Font = new Font("Orange Kid", 15F, FontStyle.Bold);
+            btnChangeBooking.ForeColor = SystemColors.ButtonHighlight;
+            btnChangeBooking.Location = new Point(64, 729);
+            btnChangeBooking.Name = "btnChangeBooking";
+            btnChangeBooking.Size = new Size(300, 40);
+            btnChangeBooking.TabIndex = 16;
+            btnChangeBooking.Text = "CHANGE BOOKING";
+            btnChangeBooking.UseVisualStyleBackColor = true;
+            btnChangeBooking.Click += btnChangeBooking_Click;
             // 
             // fAdministration
             // 
@@ -175,16 +175,16 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1182, 782);
             ControlBox = false;
-            Controls.Add(btnRoomInfo);
+            Controls.Add(btnChangeBooking);
             Controls.Add(btnAddBooking);
             Controls.Add(btnHotelInfo);
-            Controls.Add(label1);
-            Controls.Add(labelNameTitle);
-            Controls.Add(labelTitle);
-            Controls.Add(buttonClose);
-            Controls.Add(pictureBox1);
             Controls.Add(lbCurrentOccupiedRooms);
-            Controls.Add(btnBookingInfo);
+            Controls.Add(labelTitle);
+            Controls.Add(title);
+            Controls.Add(btnClose);
+            Controls.Add(pictureBox1);
+            Controls.Add(lbCurrentFreeRooms);
+            Controls.Add(btnSearchBooking);
             DoubleBuffered = true;
             MaximumSize = new Size(1200, 800);
             MinimumSize = new Size(1200, 800);
@@ -197,15 +197,15 @@
         }
 
         #endregion
-        private Button btnBookingInfo;
-        private Label lbCurrentOccupiedRooms;
+        private Button btnSearchBooking;
+        private Label lbCurrentFreeRooms;
         private PictureBox pictureBox1;
-        private Label labelNameTitle;
         private Label labelTitle;
-        private Button buttonClose;
-        private Label label1;
+        private Label title;
+        private Button btnClose;
+        private Label lbCurrentOccupiedRooms;
         private Button btnHotelInfo;
         private Button btnAddBooking;
-        private Button btnRoomInfo;
+        private Button btnChangeBooking;
     }
 }

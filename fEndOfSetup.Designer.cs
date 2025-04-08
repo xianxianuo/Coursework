@@ -35,6 +35,7 @@
             buttonStart = new Button();
             dgRoomFill = new DataGridView();
             labelNameTitle = new Label();
+            btnRandom = new Button();
             ((System.ComponentModel.ISupportInitialize)dgRoomFill).BeginInit();
             SuspendLayout();
             // 
@@ -116,6 +117,20 @@
             labelNameTitle.TabIndex = 7;
             labelNameTitle.Text = "WELCOME!";
             // 
+            // btnRandom
+            // 
+            btnRandom.BackgroundImage = (Image)resources.GetObject("btnRandom.BackgroundImage");
+            btnRandom.BackgroundImageLayout = ImageLayout.Stretch;
+            btnRandom.Font = new Font("Orange Kid", 20F);
+            btnRandom.ForeColor = Color.White;
+            btnRandom.Location = new Point(51, 598);
+            btnRandom.Name = "btnRandom";
+            btnRandom.Size = new Size(400, 50);
+            btnRandom.TabIndex = 8;
+            btnRandom.Text = "RANDOM";
+            btnRandom.UseVisualStyleBackColor = true;
+            btnRandom.Click += btnRandom_Click;
+            // 
             // fEndOfSetup
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -123,6 +138,7 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1200, 700);
             ControlBox = false;
+            Controls.Add(btnRandom);
             Controls.Add(labelNameTitle);
             Controls.Add(dgRoomFill);
             Controls.Add(buttonStart);
@@ -149,5 +165,6 @@
         private Button buttonStart;
         private DataGridView dgRoomFill;
         private Label labelNameTitle;
+        private Button btnRandom;
     }
 }

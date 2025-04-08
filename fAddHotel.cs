@@ -34,8 +34,6 @@ namespace CurseWork
             {
                 Room room = new Room();  // Create a new Room object
                 room.SetRoomNumber(i);
-                room.SetFree();
-                room.Type = "Simple";
                 hotel.Rooms.Add(room);  // Add the new room to the list
             }
 

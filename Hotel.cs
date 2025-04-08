@@ -29,51 +29,21 @@ namespace CurseWork
             Rooms = new List<Room>(numberOfRooms);
             Clients = new List<Client>();
         }
-        public void AddClient(Client client, Room room)
+        public void AddClient(Client client, Hotel hotel)
         {
-            if (client.RoomNumber == room.RoomNumber)
+            foreach (var room in hotel.Rooms)
             {
-                room.SetBusy();
+                if (client.RoomNumber == room.RoomNumber)
+                {
+                    room.SetBusy();
+                }
             }
             Clients.Add(client);
         }
-        public void DeleteClient(Client client, Room room)
-        {
-            if (client.RoomNumber == room.RoomNumber)
-            {
-                room.SetFree();
-            }
-            Clients.Remove(client);
-        }
-        public void SearchByName(string name, ListBox lb)
-        {
-            foreach (var client in Clients)
-            {
-                if (client.Name == name)
-                {
-                    lb.Text += client.Name + " "
-                            + client.Surname + " "
-                            + client.Phone + " "
-                            + client.CheckInDate + " "
-                            + client.CheckOutDate + " "
-                            + client.RoomNumber + "\n";
-                }
-            }
-        }
-        public void FreeRooms(ListBox lb)
-        {
-            lb.Items.Clear();
-            foreach (Room room in Rooms)
-            {
-                if (room.IsFree)
-                {
-                    lb.Items.Add((Room)room);
-                }
-            }
-        }
+        
         public static Hotel LoadFromFile()
         {
-            string filePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "FilesToRead", "HotelData.json");
+            string filePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "Files", "HotelData.json");
 
             if (File.Exists(filePath))
             {
@@ -89,14 +59,15 @@ namespace CurseWork
         }
         public void SaveToFile()
         {
-            string filePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "FilesToRead", "HotelData.json");
+            string filePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "Files", "HotelData.json");
 
             string json = System.Text.Json.JsonSerializer.Serialize(this, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(filePath, json);
         }
+        
         public void DeleteFileInfo()
         {
-            string filePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "FilesToRead", "HotelData.json");
+            string filePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "Files", "HotelData.json");
             File.Delete(filePath);
             File.WriteAllText(filePath, string.Empty);
         }
