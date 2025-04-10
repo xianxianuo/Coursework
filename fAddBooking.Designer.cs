@@ -68,7 +68,7 @@
             tbPhoneNum.Margin = new Padding(3, 2, 3, 2);
             tbPhoneNum.Name = "tbPhoneNum";
             tbPhoneNum.Size = new Size(259, 37);
-            tbPhoneNum.TabIndex = 28;
+            tbPhoneNum.TabIndex = 5;
             // 
             // buttonClose
             // 
@@ -108,8 +108,8 @@
             buttonStart.Margin = new Padding(3, 2, 3, 2);
             buttonStart.Name = "buttonStart";
             buttonStart.Size = new Size(400, 50);
-            buttonStart.TabIndex = 25;
-            buttonStart.Text = "START";
+            buttonStart.TabIndex = 8;
+            buttonStart.Text = "SAVE";
             buttonStart.UseVisualStyleBackColor = false;
             buttonStart.Click += buttonStart_Click;
             // 
@@ -122,7 +122,7 @@
             tbSurname.Margin = new Padding(3, 2, 3, 2);
             tbSurname.Name = "tbSurname";
             tbSurname.Size = new Size(545, 37);
-            tbSurname.TabIndex = 22;
+            tbSurname.TabIndex = 2;
             // 
             // labelName
             // 
@@ -157,7 +157,7 @@
             tbName.Margin = new Padding(3, 2, 3, 2);
             tbName.Name = "tbName";
             tbName.Size = new Size(545, 37);
-            tbName.TabIndex = 34;
+            tbName.TabIndex = 1;
             // 
             // label3
             // 
@@ -181,7 +181,7 @@
             cbRoomNumber.Location = new Point(122, 414);
             cbRoomNumber.Name = "cbRoomNumber";
             cbRoomNumber.Size = new Size(260, 38);
-            cbRoomNumber.TabIndex = 36;
+            cbRoomNumber.TabIndex = 4;
             // 
             // dtpDateSecond
             // 
@@ -195,7 +195,7 @@
             dtpDateSecond.Location = new Point(405, 509);
             dtpDateSecond.Name = "dtpDateSecond";
             dtpDateSecond.Size = new Size(261, 37);
-            dtpDateSecond.TabIndex = 37;
+            dtpDateSecond.TabIndex = 7;
             // 
             // dtpDateFirst
             // 
@@ -211,7 +211,7 @@
             dtpDateFirst.MinDate = new DateTime(2025, 1, 1, 0, 0, 0, 0);
             dtpDateFirst.Name = "dtpDateFirst";
             dtpDateFirst.Size = new Size(261, 37);
-            dtpDateFirst.TabIndex = 38;
+            dtpDateFirst.TabIndex = 6;
             // 
             // label4
             // 

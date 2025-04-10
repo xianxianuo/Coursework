@@ -53,7 +53,7 @@
             buttonStart.Margin = new Padding(3, 2, 3, 2);
             buttonStart.Name = "buttonStart";
             buttonStart.Size = new Size(400, 50);
-            buttonStart.TabIndex = 12;
+            buttonStart.TabIndex = 4;
             buttonStart.Text = "START";
             buttonStart.UseVisualStyleBackColor = false;
             buttonStart.Click += buttonStart_Click;
@@ -67,7 +67,7 @@
             labelTitle.Location = new Point(179, 69);
             labelTitle.Name = "labelTitle";
             labelTitle.Size = new Size(441, 120);
-            labelTitle.TabIndex = 0;
+            labelTitle.TabIndex = 10;
             labelTitle.Text = "ADD HOTEL";
             // 
             // labelName
@@ -79,7 +79,7 @@
             labelName.Location = new Point(190, 188);
             labelName.Name = "labelName";
             labelName.Size = new Size(87, 41);
-            labelName.TabIndex = 1;
+            labelName.TabIndex = 10;
             labelName.Text = "Name:";
             // 
             // tbHotelName
@@ -90,7 +90,7 @@
             tbHotelName.Margin = new Padding(3, 2, 3, 2);
             tbHotelName.Name = "tbHotelName";
             tbHotelName.Size = new Size(400, 29);
-            tbHotelName.TabIndex = 2;
+            tbHotelName.TabIndex = 1;
             // 
             // labelAddress
             // 
@@ -101,7 +101,7 @@
             labelAddress.Location = new Point(190, 254);
             labelAddress.Name = "labelAddress";
             labelAddress.Size = new Size(116, 41);
-            labelAddress.TabIndex = 3;
+            labelAddress.TabIndex = 10;
             labelAddress.Text = "Address:";
             // 
             // tbAdress
@@ -112,7 +112,7 @@
             tbAdress.Margin = new Padding(3, 2, 3, 2);
             tbAdress.Name = "tbAdress";
             tbAdress.Size = new Size(400, 29);
-            tbAdress.TabIndex = 4;
+            tbAdress.TabIndex = 2;
             // 
             // labelOfRooms
             // 
@@ -123,7 +123,7 @@
             labelOfRooms.Location = new Point(190, 323);
             labelOfRooms.Name = "labelOfRooms";
             labelOfRooms.Size = new Size(212, 41);
-            labelOfRooms.TabIndex = 13;
+            labelOfRooms.TabIndex = 10;
             labelOfRooms.Text = "Number of rooms:";
             // 
             // buttonClose
@@ -148,7 +148,7 @@
             tbNumberOfRooms.Margin = new Padding(3, 2, 3, 2);
             tbNumberOfRooms.Name = "tbNumberOfRooms";
             tbNumberOfRooms.Size = new Size(400, 29);
-            tbNumberOfRooms.TabIndex = 18;
+            tbNumberOfRooms.TabIndex = 3;
             // 
             // label1
             // 

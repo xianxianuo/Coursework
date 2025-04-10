@@ -47,12 +47,12 @@
             btnSearchBooking.BackgroundImage = (Image)resources.GetObject("btnSearchBooking.BackgroundImage");
             btnSearchBooking.BackgroundImageLayout = ImageLayout.Stretch;
             btnSearchBooking.FlatStyle = FlatStyle.Flat;
-            btnSearchBooking.Font = new Font("Orange Kid", 20F);
+            btnSearchBooking.Font = new Font("Orange Kid", 15F);
             btnSearchBooking.ForeColor = SystemColors.ButtonHighlight;
-            btnSearchBooking.Location = new Point(64, 402);
+            btnSearchBooking.Location = new Point(445, 729);
             btnSearchBooking.Name = "btnSearchBooking";
-            btnSearchBooking.Size = new Size(400, 50);
-            btnSearchBooking.TabIndex = 2;
+            btnSearchBooking.Size = new Size(300, 40);
+            btnSearchBooking.TabIndex = 3;
             btnSearchBooking.Text = "SEARCH BOOKING";
             btnSearchBooking.UseVisualStyleBackColor = true;
             btnSearchBooking.Click += btnSearchBooking_Click;
@@ -107,7 +107,7 @@
             btnClose.Location = new Point(1118, 19);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(40, 40);
-            btnClose.TabIndex = 9;
+            btnClose.TabIndex = 5;
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
             // 
@@ -132,7 +132,7 @@
             btnHotelInfo.Location = new Point(822, 729);
             btnHotelInfo.Name = "btnHotelInfo";
             btnHotelInfo.Size = new Size(300, 40);
-            btnHotelInfo.TabIndex = 13;
+            btnHotelInfo.TabIndex = 4;
             btnHotelInfo.Text = "HOTEL INFORMATION";
             btnHotelInfo.UseVisualStyleBackColor = true;
             btnHotelInfo.Click += btnHotelInfo_Click;
@@ -147,7 +147,7 @@
             btnAddBooking.Location = new Point(64, 346);
             btnAddBooking.Name = "btnAddBooking";
             btnAddBooking.Size = new Size(400, 50);
-            btnAddBooking.TabIndex = 15;
+            btnAddBooking.TabIndex = 1;
             btnAddBooking.Text = "ADD BOOKING";
             btnAddBooking.UseVisualStyleBackColor = true;
             btnAddBooking.Click += btnAddBooking_Click;
@@ -162,7 +162,7 @@
             btnChangeBooking.Location = new Point(64, 729);
             btnChangeBooking.Name = "btnChangeBooking";
             btnChangeBooking.Size = new Size(300, 40);
-            btnChangeBooking.TabIndex = 16;
+            btnChangeBooking.TabIndex = 2;
             btnChangeBooking.Text = "CHANGE BOOKING";
             btnChangeBooking.UseVisualStyleBackColor = true;
             btnChangeBooking.Click += btnChangeBooking_Click;

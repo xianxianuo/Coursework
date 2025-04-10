@@ -14,7 +14,6 @@ namespace CurseWork
     {
         private Hotel hotel = Hotel.LoadFromFile();
         private Client client = new Client();
-
         public fAddBooking()
         {
             InitializeComponent();
@@ -26,6 +25,17 @@ namespace CurseWork
                     cbRoomNumber.Items.Add(i.RoomNumber.ToString());
                 }
             }
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Enter)
+            {
+                // Переходимо до наступного елемента керування
+                this.SelectNextControl(this.ActiveControl, true, true, true, true);
+                return true; // Блокуємо стандартну дію клавіші Enter
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
         private void buttonClose_Click(object sender, EventArgs e)
         {
@@ -40,7 +50,6 @@ namespace CurseWork
                 fAdministration.Show();
             }
         }
-
         private void buttonStart_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(tbName.Text) ||
@@ -49,33 +58,36 @@ namespace CurseWork
                 cbRoomNumber.SelectedItem == null)
             {
                 MessageBox.Show("Please fill in all fields.");
-                Focus();
             }
-
-            client.Name = tbName.Text;
-            client.Surname = tbSurname.Text;
-            client.CheckInDate = dtpDateFirst.Value.Date;
-            if (dtpDateSecond.Value.Date <= dtpDateFirst.Value.Date)
+            else if (dtpDateSecond.Value.Date <= dtpDateFirst.Value.Date)
             {
                 MessageBox.Show("Check-out date cannot be earlier than check-in date.");
-                Focus();
             }
-            client.CheckOutDate = dtpDateSecond.Value.Date;
-            client.Phone = tbPhoneNum.Text;
-            client.RoomNumber = int.Parse(cbRoomNumber.SelectedItem.ToString());
+            else
+            {
+                client.Name = tbName.Text;
+                client.Surname = tbSurname.Text;
+                client.CheckInDate = dtpDateFirst.Value.Date;
+                client.CheckOutDate = dtpDateSecond.Value.Date;
+                client.Phone = tbPhoneNum.Text;
+                client.RoomNumber = int.Parse(cbRoomNumber.SelectedItem.ToString());
 
-            hotel.AddClient(client, hotel);
+                hotel.AddClient(client, hotel);
 
-            hotel.SaveToFile();
-            MessageBox.Show("Booking added successfully!");
+                hotel.SaveToFile();
+                MessageBox.Show("Booking added successfully!");
 
-            tbName.Clear();
-            tbSurname.Clear();
-            dtpDateSecond.Value = DateTime.Now;
-            dtpDateFirst.Value = DateTime.Now;
-            tbPhoneNum.Clear();
+                tbName.Clear();
+                tbSurname.Clear();
+                dtpDateSecond.Value = DateTime.Now;
+                dtpDateFirst.Value = DateTime.Now;
+                tbPhoneNum.Clear();
 
-            this.Close();
+                this.Close();
+
+                fAdministration fAdministration = new fAdministration();
+                fAdministration.Show();
+            }
         }
     }
 }

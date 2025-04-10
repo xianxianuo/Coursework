@@ -40,7 +40,6 @@ namespace CurseWork
             }
             Clients.Add(client);
         }
-        
         public static Hotel LoadFromFile()
         {
             string filePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "Files", "HotelData.json");

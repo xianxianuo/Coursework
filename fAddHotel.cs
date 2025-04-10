@@ -21,6 +21,18 @@ namespace CurseWork
         {
             hotel = Hotel.LoadFromFile();
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Enter)
+            {
+                // Переходимо до наступного елемента керування
+                this.SelectNextControl(this.ActiveControl, true, true, true, true);
+                return true; // Блокуємо стандартну дію клавіші Enter
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private void buttonStart_Click(object sender, EventArgs e)
         {
             hotel = new Hotel();

@@ -59,6 +59,7 @@ namespace CurseWork
 
         private void btnAddBooking_Click(object sender, EventArgs e)
         {
+            this.Hide();
             fAddBooking fAdd = new fAddBooking();
             fAdd.Show();
         }

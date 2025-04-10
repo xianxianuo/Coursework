@@ -1,78 +1,95 @@
 {
-  "Name": "xcvx",
-  "Address": "sdffds",
+  "Name": "vfddfd",
+  "Address": "dsfsdf",
   "NumberOfRooms": 10,
   "Rooms": [
     {
       "RoomNumber": 101,
-      "Type": "",
-      "Price": 173,
-      "Capacity": 1,
-      "IsFree": true
-    },
-    {
-      "RoomNumber": 102,
-      "Type": "",
-      "Price": 182,
-      "Capacity": 1,
-      "IsFree": true
-    },
-    {
-      "RoomNumber": 103,
-      "Type": "",
-      "Price": 900,
-      "Capacity": 1,
-      "IsFree": true
-    },
-    {
-      "RoomNumber": 104,
-      "Type": "",
-      "Price": 369,
-      "Capacity": 1,
-      "IsFree": true
-    },
-    {
-      "RoomNumber": 105,
-      "Type": "",
-      "Price": 549,
-      "Capacity": 1,
-      "IsFree": true
-    },
-    {
-      "RoomNumber": 106,
-      "Type": "",
-      "Price": 328,
-      "Capacity": 1,
-      "IsFree": true
-    },
-    {
-      "RoomNumber": 107,
-      "Type": "",
-      "Price": 138,
-      "Capacity": 1,
-      "IsFree": true
-    },
-    {
-      "RoomNumber": 108,
-      "Type": "",
-      "Price": 861,
-      "Capacity": 1,
-      "IsFree": true
-    },
-    {
-      "RoomNumber": 109,
       "Type": "",
       "Price": 929,
       "Capacity": 1,
       "IsFree": true
     },
     {
-      "RoomNumber": 110,
+      "RoomNumber": 102,
       "Type": "",
-      "Price": 556,
+      "Price": 404,
+      "Capacity": 1,
+      "IsFree": false
+    },
+    {
+      "RoomNumber": 103,
+      "Type": "",
+      "Price": 159,
       "Capacity": 1,
       "IsFree": true
+    },
+    {
+      "RoomNumber": 104,
+      "Type": "",
+      "Price": 456,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 105,
+      "Type": "",
+      "Price": 915,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 106,
+      "Type": "",
+      "Price": 340,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 107,
+      "Type": "",
+      "Price": 405,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 108,
+      "Type": "",
+      "Price": 144,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 109,
+      "Type": "",
+      "Price": 785,
+      "Capacity": 1,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 110,
+      "Type": "",
+      "Price": 165,
+      "Capacity": 1,
+      "IsFree": false
     }
   ],
-  "Clients": []
+  "Clients": [
+    {
+      "Name": "\u0406\u0432\u0430\u043D",
+      "Surname": "\u0412\u0430\u044E\u0442\u0430",
+      "Phone": "598347798346",
+      "CheckInDate": "2025-04-10T00:00:00",
+      "CheckOutDate": "2025-04-10T00:00:00",
+      "RoomNumber": 106
+    },
+    {
+      "Name": "\u041E\u043B\u0435\u0433",
+      "Surname": "\u0420\u043E\u043C\u0430\u043D\u043E\u0432\u0441\u044C\u043A\u0438\u0439",
+      "Phone": "543354352",
+      "CheckInDate": "2025-04-10T00:00:00+03:00",
+      "CheckOutDate": "2025-04-13T00:00:00",
+      "RoomNumber": 102
+    }
+  ]
 }
