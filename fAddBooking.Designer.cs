@@ -64,7 +64,7 @@
             tbPhoneNum.BackColor = Color.FromArgb(20, 60, 178);
             tbPhoneNum.Font = new Font("Orange Kid", 15F);
             tbPhoneNum.ForeColor = Color.White;
-            tbPhoneNum.Location = new Point(122, 509);
+            tbPhoneNum.Location = new Point(122, 520);
             tbPhoneNum.Margin = new Padding(3, 2, 3, 2);
             tbPhoneNum.Name = "tbPhoneNum";
             tbPhoneNum.Size = new Size(259, 37);
@@ -90,7 +90,7 @@
             labelOfRooms.BackColor = Color.Transparent;
             labelOfRooms.Font = new Font("Orange Kid", 20F);
             labelOfRooms.ForeColor = Color.FromArgb(3, 37, 140);
-            labelOfRooms.Location = new Point(121, 460);
+            labelOfRooms.Location = new Point(121, 471);
             labelOfRooms.Name = "labelOfRooms";
             labelOfRooms.Size = new Size(179, 41);
             labelOfRooms.TabIndex = 26;
@@ -118,7 +118,7 @@
             tbSurname.BackColor = Color.FromArgb(20, 60, 178);
             tbSurname.Font = new Font("Orange Kid", 15F);
             tbSurname.ForeColor = SystemColors.Window;
-            tbSurname.Location = new Point(121, 323);
+            tbSurname.Location = new Point(121, 334);
             tbSurname.Margin = new Padding(3, 2, 3, 2);
             tbSurname.Name = "tbSurname";
             tbSurname.Size = new Size(545, 37);
@@ -130,7 +130,7 @@
             labelName.BackColor = Color.Transparent;
             labelName.Font = new Font("Orange Kid", 20F);
             labelName.ForeColor = Color.FromArgb(3, 37, 140);
-            labelName.Location = new Point(120, 288);
+            labelName.Location = new Point(120, 299);
             labelName.Name = "labelName";
             labelName.Size = new Size(123, 41);
             labelName.TabIndex = 21;
@@ -142,7 +142,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Orange Kid", 20F);
             label2.ForeColor = Color.FromArgb(3, 37, 140);
-            label2.Location = new Point(120, 362);
+            label2.Location = new Point(120, 373);
             label2.Name = "label2";
             label2.Size = new Size(173, 41);
             label2.TabIndex = 29;
@@ -153,7 +153,7 @@
             tbName.BackColor = Color.FromArgb(20, 60, 178);
             tbName.Font = new Font("Orange Kid", 15F);
             tbName.ForeColor = SystemColors.Window;
-            tbName.Location = new Point(121, 249);
+            tbName.Location = new Point(121, 260);
             tbName.Margin = new Padding(3, 2, 3, 2);
             tbName.Name = "tbName";
             tbName.Size = new Size(545, 37);
@@ -165,7 +165,7 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Orange Kid", 20F);
             label3.ForeColor = Color.FromArgb(3, 37, 140);
-            label3.Location = new Point(120, 211);
+            label3.Location = new Point(120, 222);
             label3.Name = "label3";
             label3.Size = new Size(82, 41);
             label3.TabIndex = 33;
@@ -178,7 +178,7 @@
             cbRoomNumber.Font = new Font("Orange Kid", 15F);
             cbRoomNumber.ForeColor = Color.White;
             cbRoomNumber.FormattingEnabled = true;
-            cbRoomNumber.Location = new Point(122, 414);
+            cbRoomNumber.Location = new Point(122, 425);
             cbRoomNumber.Name = "cbRoomNumber";
             cbRoomNumber.Size = new Size(260, 38);
             cbRoomNumber.TabIndex = 4;
@@ -192,7 +192,7 @@
             dtpDateSecond.CalendarTitleForeColor = SystemColors.ControlLightLight;
             dtpDateSecond.CalendarTrailingForeColor = SystemColors.ControlLightLight;
             dtpDateSecond.Font = new Font("Orange Kid", 15F);
-            dtpDateSecond.Location = new Point(405, 509);
+            dtpDateSecond.Location = new Point(405, 520);
             dtpDateSecond.Name = "dtpDateSecond";
             dtpDateSecond.Size = new Size(261, 37);
             dtpDateSecond.TabIndex = 7;
@@ -206,7 +206,7 @@
             dtpDateFirst.CalendarTitleForeColor = SystemColors.ControlLightLight;
             dtpDateFirst.CalendarTrailingForeColor = SystemColors.ControlLightLight;
             dtpDateFirst.Font = new Font("Orange Kid", 15F);
-            dtpDateFirst.Location = new Point(405, 412);
+            dtpDateFirst.Location = new Point(405, 423);
             dtpDateFirst.MaxDate = new DateTime(2100, 1, 1, 0, 0, 0, 0);
             dtpDateFirst.MinDate = new DateTime(2025, 1, 1, 0, 0, 0, 0);
             dtpDateFirst.Name = "dtpDateFirst";
@@ -219,7 +219,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Orange Kid", 20F);
             label4.ForeColor = Color.FromArgb(3, 37, 140);
-            label4.Location = new Point(405, 362);
+            label4.Location = new Point(405, 373);
             label4.Name = "label4";
             label4.Size = new Size(115, 41);
             label4.TabIndex = 39;
@@ -231,7 +231,7 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Orange Kid", 20F);
             label5.ForeColor = Color.FromArgb(3, 37, 140);
-            label5.Location = new Point(405, 460);
+            label5.Location = new Point(405, 471);
             label5.Name = "label5";
             label5.Size = new Size(136, 41);
             label5.TabIndex = 40;
@@ -278,6 +278,7 @@
             MinimumSize = new Size(800, 700);
             Name = "fAddBooking";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += fAddBooking_Load;
             ResumeLayout(false);
             PerformLayout();
         }

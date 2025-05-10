@@ -14,8 +14,10 @@ namespace CurseWork
             string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
             string folderPath = Path.Combine(projectDirectory, "Files");
             string filePath = Path.Combine(folderPath, "HotelData.json");
+            string filePath2 = Path.Combine(folderPath, "HotelDataCopy.json");
 
             string content = File.ReadAllText(filePath);
+            string content2 = File.ReadAllText(filePath2);
 
             if (File.Exists(filePath))
             {
@@ -26,12 +28,29 @@ namespace CurseWork
                 else
                 {
                     MessageBox.Show("Hotel data loaded!", "File checking", MessageBoxButtons.OK);
-                    Application.Run(new fAdministration());
+                    File.Copy(filePath, filePath2, true);
+                    Application.Run(new fLogin());
                 }
             }
             else
             {
-                MessageBox.Show("The file 'HotelData.json' does not exist. Please create the file first!", "File checking", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (Directory.Exists(filePath2))
+                {
+                    if (string.IsNullOrWhiteSpace(content2))
+                    {
+                        Application.Run(new fAddHotel());
+                    }
+                    else
+                    {
+                        File.Copy(filePath2, filePath, true);
+                        MessageBox.Show("Hotel data loaded!", "File checking", MessageBoxButtons.OK);
+                        Application.Run(new fLogin());
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Hotel data not found!", "File checking", MessageBoxButtons.OK);
+                }
             }
         }
     }

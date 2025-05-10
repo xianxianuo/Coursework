@@ -18,6 +18,7 @@ namespace CurseWork
         public int NumberOfRooms { get; set; }
         public List<Room> Rooms { get; set; }
         public List<Client> Clients { get; set; }
+        public List<Employee> Employees { get; set; }
         public Hotel()
         {
         }
@@ -28,9 +29,14 @@ namespace CurseWork
             NumberOfRooms = numberOfRooms;
             Rooms = new List<Room>(numberOfRooms);
             Clients = new List<Client>();
+            Employees = new List<Employee>();
         }
         public void AddClient(Client client, Hotel hotel)
         {
+            if (Clients == null)
+            {
+                Clients = new List<Client>();
+            }
             foreach (var room in hotel.Rooms)
             {
                 if (client.RoomNumber == room.RoomNumber)
@@ -40,35 +46,53 @@ namespace CurseWork
             }
             Clients.Add(client);
         }
+        public void AddEmployees(int numOfEmployees)
+        {
+            this.Employees = new List<Employee>();
+
+            for (int i = 0; i < numOfEmployees; i++)
+            {
+                Employee employee = new Employee();
+                employee.CreateNewEmployee();
+                Employees.Add(employee);
+            }
+        }
         public static Hotel LoadFromFile()
         {
-            string filePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "Files", "HotelData.json");
+            string basePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "Files");
+            string filePathHotel = Path.Combine(basePath, "HotelData.json");
 
-            if (File.Exists(filePath))
+            Hotel hotel = new Hotel();
+
+            // Завантаження даних готелю
+            if (File.Exists(filePathHotel))
             {
-                string json = File.ReadAllText(filePath).Trim(); // Видаляємо зайві пробіли та перевіряємо
-
-                if (!string.IsNullOrWhiteSpace(json)) // Додаємо перевірку на порожній рядок
+                string hotelJson = File.ReadAllText(filePathHotel).Trim();
+                if (!string.IsNullOrWhiteSpace(hotelJson))
                 {
-                    return System.Text.Json.JsonSerializer.Deserialize<Hotel>(json) ?? new Hotel();
+                    hotel = JsonConvert.DeserializeObject<Hotel>(hotelJson) ?? new Hotel();
                 }
             }
-
-            return new Hotel(); // Якщо файл порожній або не існує, повертаємо новий об'єкт
+            return hotel;
         }
         public void SaveToFile()
         {
-            string filePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "Files", "HotelData.json");
+            string basePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "Files");
 
-            string json = System.Text.Json.JsonSerializer.Serialize(this, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(filePath, json);
+            // Шляхи до файлів
+            string filePathHotel = Path.Combine(basePath, "HotelData.json");
+
+            string hotelJson = JsonConvert.SerializeObject(this, Formatting.Indented);
+            File.WriteAllText(filePathHotel, hotelJson);
         }
-        
         public void DeleteFileInfo()
         {
-            string filePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "Files", "HotelData.json");
-            File.Delete(filePath);
-            File.WriteAllText(filePath, string.Empty);
+            string basePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "Files");
+            string filePathHotel = Path.Combine(basePath, "HotelData.json");
+            if (File.Exists(filePathHotel))
+            {
+                File.WriteAllText(filePathHotel, string.Empty); // або File.Delete(filePathHotel);
+            }
         }
     }
 }

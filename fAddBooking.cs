@@ -26,13 +26,13 @@ namespace CurseWork
                 }
             }
         }
+        //set tab interaction on Enter
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Enter)
             {
-                // Переходимо до наступного елемента керування
                 this.SelectNextControl(this.ActiveControl, true, true, true, true);
-                return true; // Блокуємо стандартну дію клавіші Enter
+                return true;
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
@@ -46,8 +46,8 @@ namespace CurseWork
             if (result == DialogResult.Yes)
             {
                 this.Close();
-                fAdministration fAdministration = new fAdministration();
-                fAdministration.Show();
+                fAdmin fAdmin = new fAdmin(false);
+                fAdmin.Show();
             }
         }
         private void buttonStart_Click(object sender, EventArgs e)
@@ -84,10 +84,12 @@ namespace CurseWork
                 tbPhoneNum.Clear();
 
                 this.Close();
-
-                fAdministration fAdministration = new fAdministration();
-                fAdministration.Show();
+                fAdmin fAdmin = new fAdmin(false);
+                fAdmin.Show();
             }
+        }
+        private void fAddBooking_Load(object sender, EventArgs e)
+        {
         }
     }
 }

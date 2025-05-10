@@ -1,95 +1,112 @@
 {
-  "Name": "vfddfd",
-  "Address": "dsfsdf",
+  "Name": "Hotel name",
+  "Address": "Hotel address 28",
   "NumberOfRooms": 10,
   "Rooms": [
     {
       "RoomNumber": 101,
-      "Type": "",
-      "Price": 929,
-      "Capacity": 1,
-      "IsFree": true
-    },
-    {
-      "RoomNumber": 102,
-      "Type": "",
-      "Price": 404,
-      "Capacity": 1,
+      "Type": "Presidential Suite",
+      "Price": 526.0,
+      "Capacity": 2,
       "IsFree": false
     },
     {
-      "RoomNumber": 103,
-      "Type": "",
-      "Price": 159,
-      "Capacity": 1,
+      "RoomNumber": 102,
+      "Type": "Presidential Suite",
+      "Price": 225.0,
+      "Capacity": 2,
       "IsFree": true
     },
     {
+      "RoomNumber": 103,
+      "Type": "Presidential Suite",
+      "Price": 992.0,
+      "Capacity": 2,
+      "IsFree": false
+    },
+    {
       "RoomNumber": 104,
-      "Type": "",
-      "Price": 456,
-      "Capacity": 1,
+      "Type": "Presidential Suite",
+      "Price": 874.0,
+      "Capacity": 2,
       "IsFree": true
     },
     {
       "RoomNumber": 105,
-      "Type": "",
-      "Price": 915,
-      "Capacity": 1,
+      "Type": "Suite",
+      "Price": 109.0,
+      "Capacity": 2,
       "IsFree": true
     },
     {
       "RoomNumber": 106,
-      "Type": "",
-      "Price": 340,
-      "Capacity": 1,
+      "Type": "Family Room",
+      "Price": 790.0,
+      "Capacity": 4,
       "IsFree": true
     },
     {
       "RoomNumber": 107,
-      "Type": "",
-      "Price": 405,
-      "Capacity": 1,
+      "Type": "Triple Room",
+      "Price": 940.0,
+      "Capacity": 3,
       "IsFree": true
     },
     {
       "RoomNumber": 108,
-      "Type": "",
-      "Price": 144,
-      "Capacity": 1,
+      "Type": "Presidential Suite",
+      "Price": 626.0,
+      "Capacity": 2,
       "IsFree": true
     },
     {
       "RoomNumber": 109,
-      "Type": "",
-      "Price": 785,
-      "Capacity": 1,
+      "Type": "Family Room",
+      "Price": 330.0,
+      "Capacity": 4,
       "IsFree": true
     },
     {
       "RoomNumber": 110,
-      "Type": "",
-      "Price": 165,
-      "Capacity": 1,
-      "IsFree": false
+      "Type": "Presidential Suite",
+      "Price": 494.0,
+      "Capacity": 2,
+      "IsFree": true
     }
   ],
   "Clients": [
     {
-      "Name": "\u0406\u0432\u0430\u043D",
-      "Surname": "\u0412\u0430\u044E\u0442\u0430",
-      "Phone": "598347798346",
-      "CheckInDate": "2025-04-10T00:00:00",
-      "CheckOutDate": "2025-04-10T00:00:00",
-      "RoomNumber": 106
+      "Name": "dsf",
+      "Surname": "sdfsfd",
+      "Phone": "42335452",
+      "CheckInDate": "2025-05-10T00:00:00+03:00",
+      "CheckOutDate": "2025-05-14T00:00:00",
+      "RoomNumber": 101
     },
     {
-      "Name": "\u041E\u043B\u0435\u0433",
-      "Surname": "\u0420\u043E\u043C\u0430\u043D\u043E\u0432\u0441\u044C\u043A\u0438\u0439",
-      "Phone": "543354352",
-      "CheckInDate": "2025-04-10T00:00:00+03:00",
-      "CheckOutDate": "2025-04-13T00:00:00",
-      "RoomNumber": 102
+      "Name": "gfdfd",
+      "Surname": "gfdfg",
+      "Phone": "65435763564",
+      "CheckInDate": "2025-05-10T00:00:00+03:00",
+      "CheckOutDate": "2025-05-14T00:00:00",
+      "RoomNumber": 103
+    }
+  ],
+  "Employees": [
+    {
+      "Id": "1",
+      "Name": "simple employee",
+      "Password": "1"
+    },
+    {
+      "Id": "fovzp",
+      "Name": "simple employee",
+      "Password": "zgz9j"
+    },
+    {
+      "Id": "yhbtg",
+      "Name": "simple employee",
+      "Password": "7mkg2"
     }
   ]
 }

@@ -42,13 +42,15 @@ namespace CurseWork
             hotel.Clients = new List<Client>();
             hotel.Rooms = new List<Room>(); // Initialize the Rooms property
 
+            int numOfEmployees = Convert.ToInt32(tbNumOfEmployee.Text);
+            hotel.AddEmployees(numOfEmployees);
+
             for (int i = 1; i <= hotel.NumberOfRooms; i++)
             {
                 Room room = new Room();  // Create a new Room object
                 room.SetRoomNumber(i);
                 hotel.Rooms.Add(room);  // Add the new room to the list
             }
-
             hotel.SaveToFile();
             this.Hide();
             MessageBox.Show("Hotel added successfully");

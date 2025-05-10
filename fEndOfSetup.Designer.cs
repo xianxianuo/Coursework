@@ -31,12 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fEndOfSetup));
             buttonClose = new Button();
             labelTitle = new Label();
-            label3 = new Label();
-            buttonStart = new Button();
-            dgRoomFill = new DataGridView();
+            btnStart = new Button();
+            dgTableEndSetInfo = new DataGridView();
             labelNameTitle = new Label();
             btnRandom = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgRoomFill).BeginInit();
+            toolStrip = new ToolStrip();
+            ts_btnAdd = new ToolStripButton();
+            ts_btnDelete = new ToolStripButton();
+            ((System.ComponentModel.ISupportInitialize)dgTableEndSetInfo).BeginInit();
+            toolStrip.SuspendLayout();
             SuspendLayout();
             // 
             // buttonClose
@@ -63,48 +66,36 @@
             labelTitle.TabIndex = 1;
             labelTitle.Text = "END SET UP";
             // 
-            // label3
+            // btnStart
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Orange Kid", 30F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.FromArgb(15, 29, 70);
-            label3.Location = new Point(51, 217);
-            label3.Name = "label3";
-            label3.Size = new Size(578, 60);
-            label3.TabIndex = 1;
-            label3.Text = "Fill in information about the rooms";
+            btnStart.BackgroundImage = (Image)resources.GetObject("btnStart.BackgroundImage");
+            btnStart.BackgroundImageLayout = ImageLayout.Stretch;
+            btnStart.Font = new Font("Orange Kid", 20F);
+            btnStart.ForeColor = Color.White;
+            btnStart.Location = new Point(751, 598);
+            btnStart.Name = "btnStart";
+            btnStart.Size = new Size(400, 50);
+            btnStart.TabIndex = 5;
+            btnStart.Text = "NEXT";
+            btnStart.UseVisualStyleBackColor = true;
+            btnStart.Click += buttonStart_Click;
             // 
-            // buttonStart
+            // dgTableEndSetInfo
             // 
-            buttonStart.BackgroundImage = (Image)resources.GetObject("buttonStart.BackgroundImage");
-            buttonStart.BackgroundImageLayout = ImageLayout.Stretch;
-            buttonStart.Font = new Font("Orange Kid", 20F);
-            buttonStart.ForeColor = Color.White;
-            buttonStart.Location = new Point(751, 598);
-            buttonStart.Name = "buttonStart";
-            buttonStart.Size = new Size(400, 50);
-            buttonStart.TabIndex = 5;
-            buttonStart.Text = "END SET UP";
-            buttonStart.UseVisualStyleBackColor = true;
-            buttonStart.Click += buttonStart_Click;
-            // 
-            // dgRoomFill
-            // 
-            dgRoomFill.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgRoomFill.BackgroundColor = Color.FromArgb(255, 192, 192);
-            dgRoomFill.BorderStyle = BorderStyle.None;
-            dgRoomFill.ColumnHeadersHeight = 29;
-            dgRoomFill.Cursor = Cursors.Hand;
-            dgRoomFill.EnableHeadersVisualStyles = false;
-            dgRoomFill.GridColor = Color.FromArgb(3, 37, 140);
-            dgRoomFill.Location = new Point(51, 280);
-            dgRoomFill.Name = "dgRoomFill";
-            dgRoomFill.RightToLeft = RightToLeft.No;
-            dgRoomFill.RowHeadersWidth = 51;
-            dgRoomFill.ScrollBars = ScrollBars.Vertical;
-            dgRoomFill.Size = new Size(1100, 300);
-            dgRoomFill.TabIndex = 6;
+            dgTableEndSetInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgTableEndSetInfo.BackgroundColor = Color.FromArgb(255, 192, 192);
+            dgTableEndSetInfo.BorderStyle = BorderStyle.None;
+            dgTableEndSetInfo.ColumnHeadersHeight = 29;
+            dgTableEndSetInfo.Cursor = Cursors.Hand;
+            dgTableEndSetInfo.EnableHeadersVisualStyles = false;
+            dgTableEndSetInfo.GridColor = Color.FromArgb(3, 37, 140);
+            dgTableEndSetInfo.Location = new Point(51, 280);
+            dgTableEndSetInfo.Name = "dgTableEndSetInfo";
+            dgTableEndSetInfo.RightToLeft = RightToLeft.No;
+            dgTableEndSetInfo.RowHeadersWidth = 51;
+            dgTableEndSetInfo.ScrollBars = ScrollBars.Vertical;
+            dgTableEndSetInfo.Size = new Size(1100, 300);
+            dgTableEndSetInfo.TabIndex = 6;
             // 
             // labelNameTitle
             // 
@@ -131,6 +122,46 @@
             btnRandom.UseVisualStyleBackColor = true;
             btnRandom.Click += btnRandom_Click;
             // 
+            // toolStrip
+            // 
+            toolStrip.AllowDrop = true;
+            toolStrip.Anchor = AnchorStyles.None;
+            toolStrip.AutoSize = false;
+            toolStrip.BackColor = Color.FromArgb(13, 139, 217);
+            toolStrip.Dock = DockStyle.None;
+            toolStrip.GripStyle = ToolStripGripStyle.Hidden;
+            toolStrip.ImageScalingSize = new Size(40, 40);
+            toolStrip.Items.AddRange(new ToolStripItem[] { ts_btnAdd, ts_btnDelete });
+            toolStrip.Location = new Point(51, 215);
+            toolStrip.Name = "toolStrip";
+            toolStrip.Padding = new Padding(40, 0, 40, 0);
+            toolStrip.Size = new Size(1100, 62);
+            toolStrip.TabIndex = 13;
+            toolStrip.Text = "toolStrip";
+            // 
+            // ts_btnAdd
+            // 
+            ts_btnAdd.AutoSize = false;
+            ts_btnAdd.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            ts_btnAdd.Image = (Image)resources.GetObject("ts_btnAdd.Image");
+            ts_btnAdd.ImageTransparentColor = Color.Magenta;
+            ts_btnAdd.Margin = new Padding(0);
+            ts_btnAdd.MergeIndex = 0;
+            ts_btnAdd.Name = "ts_btnAdd";
+            ts_btnAdd.Size = new Size(40, 40);
+            ts_btnAdd.Click += ts_btnAdd_Click;
+            // 
+            // ts_btnDelete
+            // 
+            ts_btnDelete.AutoSize = false;
+            ts_btnDelete.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            ts_btnDelete.Image = (Image)resources.GetObject("ts_btnDelete.Image");
+            ts_btnDelete.ImageTransparentColor = Color.Magenta;
+            ts_btnDelete.Margin = new Padding(0);
+            ts_btnDelete.Name = "ts_btnDelete";
+            ts_btnDelete.Size = new Size(40, 40);
+            ts_btnDelete.Click += ts_btnDelete_Click;
+            // 
             // fEndOfSetup
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -138,11 +169,11 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1200, 700);
             ControlBox = false;
+            Controls.Add(toolStrip);
             Controls.Add(btnRandom);
             Controls.Add(labelNameTitle);
-            Controls.Add(dgRoomFill);
-            Controls.Add(buttonStart);
-            Controls.Add(label3);
+            Controls.Add(dgTableEndSetInfo);
+            Controls.Add(btnStart);
             Controls.Add(labelTitle);
             Controls.Add(buttonClose);
             DoubleBuffered = true;
@@ -152,7 +183,9 @@
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Load += fEndOfSetup_Load;
-            ((System.ComponentModel.ISupportInitialize)dgRoomFill).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgTableEndSetInfo).EndInit();
+            toolStrip.ResumeLayout(false);
+            toolStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -161,10 +194,12 @@
 
         private Button buttonClose;
         private Label labelTitle;
-        private Label label3;
-        private Button buttonStart;
-        private DataGridView dgRoomFill;
+        private Button btnStart;
+        private DataGridView dgTableEndSetInfo;
         private Label labelNameTitle;
         private Button btnRandom;
+        private ToolStrip toolStrip;
+        private ToolStripButton ts_btnAdd;
+        private ToolStripButton ts_btnDelete;
     }
 }

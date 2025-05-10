@@ -10,7 +10,7 @@ using System.Text.Json.Serialization;
 
 namespace CurseWork
 {
-    internal class Client
+    internal class Client 
     {
         public string Name { get; set; }
         public string Surname { get; set; }

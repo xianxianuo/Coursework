@@ -1,0 +1,95 @@
+{
+  "Name": "Hotel name",
+  "Address": "Hotel address 28",
+  "NumberOfRooms": 10,
+  "Rooms": [
+    {
+      "RoomNumber": 101,
+      "Type": "Presidential Suite",
+      "Price": 526.0,
+      "Capacity": 2,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 102,
+      "Type": "Presidential Suite",
+      "Price": 225.0,
+      "Capacity": 2,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 103,
+      "Type": "Presidential Suite",
+      "Price": 992.0,
+      "Capacity": 2,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 104,
+      "Type": "Presidential Suite",
+      "Price": 874.0,
+      "Capacity": 2,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 105,
+      "Type": "Suite",
+      "Price": 109.0,
+      "Capacity": 2,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 106,
+      "Type": "Family Room",
+      "Price": 790.0,
+      "Capacity": 4,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 107,
+      "Type": "Triple Room",
+      "Price": 940.0,
+      "Capacity": 3,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 108,
+      "Type": "Presidential Suite",
+      "Price": 626.0,
+      "Capacity": 2,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 109,
+      "Type": "Family Room",
+      "Price": 330.0,
+      "Capacity": 4,
+      "IsFree": true
+    },
+    {
+      "RoomNumber": 110,
+      "Type": "Presidential Suite",
+      "Price": 494.0,
+      "Capacity": 2,
+      "IsFree": true
+    }
+  ],
+  "Clients": [],
+  "Employees": [
+    {
+      "Id": "1",
+      "Name": "simple employee",
+      "Password": "1"
+    },
+    {
+      "Id": "fovzp",
+      "Name": "simple employee",
+      "Password": "zgz9j"
+    },
+    {
+      "Id": "yhbtg",
+      "Name": "simple employee",
+      "Password": "7mkg2"
+    }
+  ]
+}
