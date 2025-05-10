@@ -3,8 +3,6 @@
 
 **CurseWork** is a desktop hotel management database application created for educational purposes.
 
-> 📌 Explore more dev tools at [gptonline.ai](https://gptonline.ai/)
-
 ## 📁 About the Project
 
 This application allows you to:
