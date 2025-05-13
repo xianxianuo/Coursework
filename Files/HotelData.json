@@ -7,89 +7,112 @@
       "RoomNumber": 101,
       "Type": "Presidential Suite",
       "Price": 526.0,
-      "Capacity": 2,
+      "Capacity": 0,
       "IsFree": false
     },
     {
       "RoomNumber": 102,
       "Type": "Presidential Suite",
       "Price": 225.0,
-      "Capacity": 2,
+      "Capacity": 0,
       "IsFree": true
     },
     {
       "RoomNumber": 103,
       "Type": "Presidential Suite",
       "Price": 992.0,
-      "Capacity": 2,
+      "Capacity": 0,
       "IsFree": false
     },
     {
       "RoomNumber": 104,
       "Type": "Presidential Suite",
       "Price": 874.0,
-      "Capacity": 2,
-      "IsFree": true
+      "Capacity": 0,
+      "IsFree": false
     },
     {
       "RoomNumber": 105,
       "Type": "Suite",
       "Price": 109.0,
-      "Capacity": 2,
+      "Capacity": 0,
       "IsFree": true
     },
     {
       "RoomNumber": 106,
       "Type": "Family Room",
       "Price": 790.0,
-      "Capacity": 4,
-      "IsFree": true
+      "Capacity": 0,
+      "IsFree": false
     },
     {
       "RoomNumber": 107,
       "Type": "Triple Room",
       "Price": 940.0,
-      "Capacity": 3,
-      "IsFree": true
+      "Capacity": 0,
+      "IsFree": false
     },
     {
       "RoomNumber": 108,
       "Type": "Presidential Suite",
       "Price": 626.0,
-      "Capacity": 2,
+      "Capacity": 0,
       "IsFree": true
     },
     {
       "RoomNumber": 109,
       "Type": "Family Room",
       "Price": 330.0,
-      "Capacity": 4,
-      "IsFree": true
+      "Capacity": 0,
+      "IsFree": false
     },
     {
       "RoomNumber": 110,
       "Type": "Presidential Suite",
       "Price": 494.0,
-      "Capacity": 2,
+      "Capacity": 0,
       "IsFree": true
+    },
+    {
+      "RoomNumber": 0,
+      "Type": null,
+      "Price": 0.0,
+      "Capacity": 0,
+      "IsFree": false
     }
   ],
   "Clients": [
     {
-      "Name": "dsf",
-      "Surname": "sdfsfd",
-      "Phone": "42335452",
-      "CheckInDate": "2025-05-10T00:00:00+03:00",
-      "CheckOutDate": "2025-05-14T00:00:00",
-      "RoomNumber": 101
+      "Name": "fhgdd",
+      "Surname": "hdfs",
+      "Phone": "3253426",
+      "CheckInDate": "2025-05-13T00:00:00",
+      "CheckOutDate": "2025-05-23T00:00:00",
+      "RoomNumber": 107
     },
     {
-      "Name": "gfdfd",
-      "Surname": "gfdfg",
-      "Phone": "65435763564",
-      "CheckInDate": "2025-05-10T00:00:00+03:00",
+      "Name": "hgfd",
+      "Surname": "hgsfg",
+      "Phone": "6524564",
+      "CheckInDate": "2025-05-13T00:00:00",
+      "CheckOutDate": "2025-05-17T00:00:00",
+      "RoomNumber": 109
+    },
+    {
+      "Name": "hgfshgb",
+      "Surname": "hfgfhbndf",
+      "Phone": "6524646",
+      "CheckInDate": "2025-05-13T00:00:00",
+      "CheckOutDate": "2025-05-19T00:00:00",
+      "RoomNumber": 106
+    },
+    {
+      "Name": "авппав",
+      "Surname": "апвав",
+      "Phone": "fsdf235",
+      "CheckInDate": "2025-05-13T00:00:00",
       "CheckOutDate": "2025-05-14T00:00:00",
-      "RoomNumber": 103
+      "RoomNumber": 104
     }
   ],
   "Employees": [

@@ -35,9 +35,6 @@
             ts_btnAdd = new ToolStripButton();
             ts_btnDelete = new ToolStripButton();
             ts_cbSort = new ToolStripComboBox();
-            ts_btnBack = new ToolStripButton();
-            ts_btnSearch = new ToolStripButton();
-            ts_tbSearch = new ToolStripTextBox();
             title = new Label();
             dgBookingChange = new DataGridView();
             contextMenuStrip = new ContextMenuStrip(components);
@@ -110,7 +107,7 @@
             toolStrip.GripMargin = new Padding(0);
             toolStrip.GripStyle = ToolStripGripStyle.Hidden;
             toolStrip.ImageScalingSize = new Size(40, 40);
-            toolStrip.Items.AddRange(new ToolStripItem[] { ts_btnSaveInfo, ts_btnAdd, ts_btnDelete, ts_cbSort, ts_btnBack, ts_btnSearch, ts_tbSearch });
+            toolStrip.Items.AddRange(new ToolStripItem[] { ts_btnSaveInfo, ts_btnAdd, ts_btnDelete, ts_cbSort });
             toolStrip.Location = new Point(49, 156);
             toolStrip.Name = "toolStrip";
             toolStrip.Padding = new Padding(40, 0, 40, 0);
@@ -160,41 +157,6 @@
             ts_cbSort.Size = new Size(200, 62);
             ts_cbSort.Click += ts_cbSort_SelectedIndexChanged;
             // 
-            // ts_btnBack
-            // 
-            ts_btnBack.Alignment = ToolStripItemAlignment.Right;
-            ts_btnBack.AutoSize = false;
-            ts_btnBack.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            ts_btnBack.Image = (Image)resources.GetObject("ts_btnBack.Image");
-            ts_btnBack.ImageTransparentColor = Color.Magenta;
-            ts_btnBack.Margin = new Padding(0);
-            ts_btnBack.Name = "ts_btnBack";
-            ts_btnBack.Size = new Size(40, 40);
-            ts_btnBack.Text = "ts_btnBack";
-            ts_btnBack.Click += ts_btnBack_Click;
-            // 
-            // ts_btnSearch
-            // 
-            ts_btnSearch.Alignment = ToolStripItemAlignment.Right;
-            ts_btnSearch.AutoSize = false;
-            ts_btnSearch.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            ts_btnSearch.Image = (Image)resources.GetObject("ts_btnSearch.Image");
-            ts_btnSearch.ImageTransparentColor = Color.Magenta;
-            ts_btnSearch.Margin = new Padding(5, 0, 0, 0);
-            ts_btnSearch.Name = "ts_btnSearch";
-            ts_btnSearch.Size = new Size(40, 40);
-            ts_btnSearch.Text = "ts_btnSearch";
-            ts_btnSearch.Click += ts_btnSearch_Click;
-            // 
-            // ts_tbSearch
-            // 
-            ts_tbSearch.Alignment = ToolStripItemAlignment.Right;
-            ts_tbSearch.Font = new Font("Orange Kid", 15F);
-            ts_tbSearch.Margin = new Padding(0, 0, 20, 0);
-            ts_tbSearch.MaxLength = 300;
-            ts_tbSearch.Name = "ts_tbSearch";
-            ts_tbSearch.Size = new Size(200, 62);
-            // 
             // title
             // 
             title.AutoSize = true;
@@ -232,13 +194,13 @@
             contextMenuStrip.Name = "contextMenuStrip";
             contextMenuStrip.ShowCheckMargin = true;
             contextMenuStrip.ShowImageMargin = false;
-            contextMenuStrip.Size = new Size(211, 104);
+            contextMenuStrip.Size = new Size(203, 76);
             // 
             // toolStripMenuItemAdd
             // 
             toolStripMenuItemAdd.Name = "toolStripMenuItemAdd";
             toolStripMenuItemAdd.ShortcutKeys = Keys.Control | Keys.V;
-            toolStripMenuItemAdd.Size = new Size(210, 24);
+            toolStripMenuItemAdd.Size = new Size(202, 24);
             toolStripMenuItemAdd.Text = "Add";
             toolStripMenuItemAdd.Click += toolStripMenuItemAdd_Click;
             // 
@@ -246,7 +208,7 @@
             // 
             toolStripMenuItemDelete.Name = "toolStripMenuItemDelete";
             toolStripMenuItemDelete.ShortcutKeys = Keys.Control | Keys.X;
-            toolStripMenuItemDelete.Size = new Size(210, 24);
+            toolStripMenuItemDelete.Size = new Size(202, 24);
             toolStripMenuItemDelete.Text = "Delete";
             toolStripMenuItemDelete.Click += toolStripMenuItemDelete_Click;
             // 
@@ -254,7 +216,7 @@
             // 
             toolStripMenuItemSave.Name = "toolStripMenuItemSave";
             toolStripMenuItemSave.ShortcutKeys = Keys.Control | Keys.S;
-            toolStripMenuItemSave.Size = new Size(210, 24);
+            toolStripMenuItemSave.Size = new Size(202, 24);
             toolStripMenuItemSave.Text = "Save to file";
             toolStripMenuItemSave.Click += toolStripMenuItemSave_Click;
             // 
@@ -299,7 +261,7 @@
             // 
             saveToolStripMenuItem.ForeColor = Color.FromArgb(3, 37, 140);
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(224, 34);
+            saveToolStripMenuItem.Size = new Size(172, 34);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
@@ -308,7 +270,7 @@
             saveAsMenuStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { copyMenuStripItem, newFileMenuStripItem });
             saveAsMenuStripMenuItem.ForeColor = Color.FromArgb(3, 37, 140);
             saveAsMenuStripMenuItem.Name = "saveAsMenuStripMenuItem";
-            saveAsMenuStripMenuItem.Size = new Size(224, 34);
+            saveAsMenuStripMenuItem.Size = new Size(172, 34);
             saveAsMenuStripMenuItem.Text = "Save as";
             // 
             // copyMenuStripItem
@@ -332,7 +294,7 @@
             openMenuStripItem.DropDownItems.AddRange(new ToolStripItem[] { clientToolStripMenuItem, employeeToolStripMenuItem, roomToolStripMenuItem });
             openMenuStripItem.ForeColor = Color.FromArgb(3, 37, 140);
             openMenuStripItem.Name = "openMenuStripItem";
-            openMenuStripItem.Size = new Size(224, 34);
+            openMenuStripItem.Size = new Size(172, 34);
             openMenuStripItem.Text = "Open ";
             // 
             // clientToolStripMenuItem
@@ -364,14 +326,14 @@
             openAsMenuStripItem.DropDownItems.AddRange(new ToolStripItem[] { copyToolStripMenuItem, newFileToolStripMenuItem });
             openAsMenuStripItem.ForeColor = Color.FromArgb(3, 37, 140);
             openAsMenuStripItem.Name = "openAsMenuStripItem";
-            openAsMenuStripItem.Size = new Size(224, 34);
+            openAsMenuStripItem.Size = new Size(172, 34);
             openAsMenuStripItem.Text = "Open as";
             // 
             // copyToolStripMenuItem
             // 
             copyToolStripMenuItem.ForeColor = Color.FromArgb(3, 37, 140);
             copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            copyToolStripMenuItem.Size = new Size(224, 34);
+            copyToolStripMenuItem.Size = new Size(170, 34);
             copyToolStripMenuItem.Text = "Copy";
             copyToolStripMenuItem.Click += copyOpenMenuStripMenuItem_Click;
             // 
@@ -379,7 +341,7 @@
             // 
             newFileToolStripMenuItem.ForeColor = Color.FromArgb(3, 37, 140);
             newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
-            newFileToolStripMenuItem.Size = new Size(224, 34);
+            newFileToolStripMenuItem.Size = new Size(170, 34);
             newFileToolStripMenuItem.Text = "New file";
             newFileToolStripMenuItem.Click += openToolStripMenuItem_Click;
             // 
@@ -679,9 +641,6 @@
         private ToolStripButton ts_btnAdd;
         private ToolStripButton ts_btnDelete;
         private ToolStripComboBox ts_cbSort;
-        private ToolStripButton ts_btnBack;
-        private ToolStripButton ts_btnSearch;
-        private ToolStripTextBox ts_tbSearch;
         private Label title;
         private DataGridView dgBookingChange;
         private Button buttonClose;

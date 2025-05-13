@@ -15,13 +15,15 @@ namespace CurseWork
         private Hotel hotel = Hotel.LoadFromFile();
         private List<Room> rooms;
         private List<Employee> employees;
-        public fChangeHotel()
+        private bool isAdmin;
+        public fChangeHotel(bool isAdmin)
         {
             InitializeComponent();
             rooms = hotel.Rooms;
             employees = hotel.Employees;
+            this.isAdmin = isAdmin;
 
-            if (this.Name == "showHotel")
+            if (!isAdmin)
             {
                 btnChangeEmployee.Visible = false;
                 btnChangeClients.Visible = false;
@@ -46,10 +48,10 @@ namespace CurseWork
         private void Exit()
         {
             this.Close();
-            if (this.Name == "changeHotel")
+            if (isAdmin)
             {
                 fAdmin fManager = new fAdmin(true);
-                fManager.ShowDialog();
+                fManager.Show();
             }
             else
             {
@@ -100,8 +102,9 @@ namespace CurseWork
         private void btnChangeEmployee_Click(object sender, EventArgs e)
         {
             this.Close();
-            //fChangeEmployee fChangeEmployee = new fChangeEmployee();
-            //fChangeEmployee.Show();
+            fChangeInformation fChangeEmployee = new fChangeInformation();
+            fChangeEmployee.isAdmin = true;
+            fChangeEmployee.Show();
         }
     }
 }

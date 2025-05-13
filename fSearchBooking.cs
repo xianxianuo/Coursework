@@ -16,9 +16,11 @@ namespace CurseWork
         DataTable dataTable = new DataTable();
         private string searchSurname,
                 searchName;
-        public fSearchBooking()
+        private bool isAdmin;
+        public fSearchBooking(bool isAdmin)
         {
             InitializeComponent();
+            this.isAdmin = isAdmin;
         }
         private void fSearchBooking_Load(object sender, EventArgs e)
         {
@@ -32,13 +34,6 @@ namespace CurseWork
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
-            // If no data is present in the table, there's nothing to save
-            if (dataTable.Rows.Count == 0)
-            {
-                MessageBox.Show("No data to save.");
-                return;
-            }
-
             // Find the client by previously saved name and surname
             Client client = hotel.Clients.FirstOrDefault(c => c.Name == searchName && c.Surname == searchSurname);
 
@@ -82,16 +77,32 @@ namespace CurseWork
                 // Either after saving or skipping, clear the table and go back to admin form
                 dataTable.Clear();
                 this.Hide();
-                fAdmin fAdmin = new fAdmin(false);
-                fAdmin.Show();
+                if (isAdmin)
+                {
+                    fAdmin fAdmin = new fAdmin(true);
+                    fAdmin.Show();
+                }
+                else
+                {
+                    fAdmin fAdmin = new fAdmin(false);
+                    fAdmin.Show();
+                }
             }
             else
             {
                 // Client was not found — likely due to incorrect search reference
                 MessageBox.Show("Booking not found. Please try again.");
                 this.Hide();
-                fAdmin fAdmin = new fAdmin(false);
-                fAdmin.Show();
+                if (isAdmin)
+                {
+                    fAdmin fAdmin = new fAdmin(true);
+                    fAdmin.Show();
+                }
+                else
+                {
+                    fAdmin fAdmin = new fAdmin(false);
+                    fAdmin.Show();
+                }
             }
         }
         private void btnSearchBooking_Click(object sender, EventArgs e)

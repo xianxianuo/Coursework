@@ -19,7 +19,7 @@ namespace CurseWork
         private Hotel hotel = Hotel.LoadFromFile();
         private List<Client> clients;
         private List<Room> rooms;
-        private List<Employee> employee;
+        private List<Employee> employees;
         private List<string> roomsType = new List<string>
         {
             "Single Room",
@@ -36,10 +36,9 @@ namespace CurseWork
 
         // create object for DataGridView
         private DataTable dataTable = new DataTable();
-        private DataTable searchDataTable = new DataTable();
-        private bool isSearch = false;
-        private string searchValue = "";
-        private bool isSave = false;
+        private bool client = false;
+        private bool employee = false;
+        private bool room = false;
 
         // DataGridView location and size
         public int x;
@@ -51,7 +50,7 @@ namespace CurseWork
             InitializeComponent();
             clients = hotel.Clients;
             rooms = hotel.Rooms;
-            employee = hotel.Employees;
+            employees = hotel.Employees;
 
             //set the location of the DataGridView
             x = dgBookingChange.Location.X;
@@ -64,8 +63,9 @@ namespace CurseWork
         private void dataClient()
         {
             title.Text = "Client Info";
-            isSave = false;
-            this.Name = "fChangeClient";
+            client = true;
+            room = false;
+            employee = false;
             //
             //menu strip buttons
             //
@@ -133,8 +133,9 @@ namespace CurseWork
         private void dataEmployee()
         {
             title.Text = "Employee Info";
-            isSave = false;
-            this.Name = "fChangeEmployee";
+            employee = true;
+            room = false;
+            client = false;
             //
             //menu strip buttons
             //
@@ -167,7 +168,7 @@ namespace CurseWork
             //
             //table
             //
-            employee.Sort(new CmprtEmployeesByName());
+            employees.Sort(new CmprtEmployeesByName());
 
             dataTable.Clear();
             dataTable.Columns.Clear();
@@ -191,8 +192,9 @@ namespace CurseWork
         private void dataRoom()
         {
             title.Text = "Room Info";
-            isSave = false;
-            this.Name = "fChangeRoom";
+            room = true;
+            client = false;
+            employee = false;
             //
             //menu strip buttons
             //
@@ -258,7 +260,7 @@ namespace CurseWork
             if (isAdmin)
             {
                 fAdmin fManager = new fAdmin(true);
-                fManager.ShowDialog();
+                fManager.Show();
             }
             else
             {
@@ -272,21 +274,9 @@ namespace CurseWork
             {
                 openMenuStripItem.Visible = false;
             }
-            switch (this.Name)
-            {
-                case "fChangeClient":
-                    dataClient();
-                    break;
-                case "fChangeEmployee":
-                    dataEmployee();
-                    break;
-                case "fChangeRoom":
-                    dataRoom();
-                    break;
-                default:
-                    dataClient();
-                    break;
-            }
+
+            dataClient();
+
             ts_cbSort.SelectedIndexChanged += ts_cbSort_SelectedIndexChanged;
         }
         private void buttonClose_Click(object sender, EventArgs e)
@@ -341,70 +331,46 @@ namespace CurseWork
         //
         private void clientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!isSave)
+            string message = "Do you save changed info? Information will be lost.";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
             {
-                string message = "Do you save changed info? Information will be lost.";
-                string title = "Close Window";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-                if (result == DialogResult.Yes)
-                {
-                    saveToolStripMenuItem_Click(sender, e);
-                    isSave = false;
-                }
-                dataClient();
+                saveToolStripMenuItem_Click(sender, e);
             }
-            else
-            {
-                dataClient();
-            }
+            dataClient();
         }
         private void employeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!isSave)
+            string message = "Do you save changed info? Information will be lost.";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
             {
-                string message = "Do you save changed info? Information will be lost.";
-                string title = "Close Window";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-                if (result == DialogResult.Yes)
-                {
-                    saveToolStripMenuItem_Click(sender, e);
-                    isSave = false;
-                }
-                dataEmployee();
+                saveToolStripMenuItem_Click(sender, e);
             }
-            else
-            {
-                dataEmployee();
-            }
+            dataEmployee();
         }
         private void roomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!isSave)
+            string message = "Do you save changed info? Information will be lost.";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
             {
-                string message = "Do you save changed info? Information will be lost.";
-                string title = "Close Window";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-                if (result == DialogResult.Yes)
-                {
-                    saveToolStripMenuItem_Click(sender, e);
-                    isSave = false;
-                }
-                dataRoom();
+                saveToolStripMenuItem_Click(sender, e);
             }
-            else
-            {
-                dataRoom();
-            }
+            dataRoom();
         }
         //
         // MENU STRIP buttons Edit-Client
         //
         private void addClientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dataTable.Rows.Add("NewClient", "NewSurname", 0, DateTime.Now, DateTime.Now.AddDays(1));
+            dataTable.Rows.Add("NewClient", "NewSurname", "000 000 00 00", 100, DateTime.Now, DateTime.Now.AddDays(1));
         }
         private void deleteClientToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -540,8 +506,8 @@ namespace CurseWork
         private void nameEmployeeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             dataTable.Clear();
-            employee.Sort(new CmprtEmployeesByName());
-            foreach (var employee in employee)
+            employees.Sort(new CmprtEmployeesByName());
+            foreach (var employee in employees)
             {
                 dataTable.Rows.Add(employee.Name, employee.Id, employee.Password);
             }
@@ -549,8 +515,8 @@ namespace CurseWork
         private void idToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataTable.Clear();
-            employee.Sort(new CmprtEmployeesById());
-            foreach (var employee in employee)
+            employees.Sort(new CmprtEmployeesById());
+            foreach (var employee in employees)
             {
                 dataTable.Rows.Add(employee.Name, employee.Id, employee.Password);
             }
@@ -611,349 +577,165 @@ namespace CurseWork
         //
         private void SaveClients()
         {
-            if (this.Name == "fChangeClient")
+            hotel.Clients.Clear();
+
+            for (int i = 0; i < dgBookingChange.Rows.Count - 1; i++)
             {
-                if (!isSearch)
+
+                Client client = new Client();
+
+                client.Name = (string)dgBookingChange.Rows[i].Cells[0].Value;
+                client.Surname = (string)dgBookingChange.Rows[i].Cells[1].Value;
+                client.Phone = (string)dgBookingChange.Rows[i].Cells[2].Value;
+                client.RoomNumber = Convert.ToInt32(dgBookingChange.Rows[i].Cells[3].Value);
+
+                object checkInValue = dgBookingChange.Rows[i].Cells[4].Value;
+                object checkOutValue = dgBookingChange.Rows[i].Cells[5].Value;
+
+                if (checkInValue is DateTime checkInDate && checkOutValue is DateTime checkOutDate)
                 {
-                    hotel.Clients.Clear();
-                    foreach (DataGridViewRow r in dgBookingChange.Rows)
-                    {
-                        if (r.IsNewRow) continue;
-                        if (r.Cells["Room Number"].Value == null ||
-                            r.Cells["Check In"].Value == null ||
-                            r.Cells["Check Out"].Value == null ||
-                            string.IsNullOrWhiteSpace(r.Cells["Name"].Value?.ToString()) ||
-                            string.IsNullOrWhiteSpace(r.Cells["Surname"].Value?.ToString()) ||
-                            string.IsNullOrWhiteSpace(r.Cells["Phone"].Value?.ToString()))
-                        {
-                            MessageBox.Show("Fill all fields");
-                            return;
-                        }
-                        foreach (var room in hotel.Rooms)
-                        {
-                            if (Convert.ToInt32(r.Cells["Room Number"].Value) != room.RoomNumber)
-                            {
-                                MessageBox.Show("Room not found");
-                                return;
-                            }
-                        }
-
-                        hotel.Clients.Add(new Client
-                        {
-                            Name = r.Cells["Name"].Value as string,
-                            Surname = r.Cells["Surname"].Value as string,
-                            Phone = r.Cells["Phone"].Value as string,
-                            CheckInDate = (DateTime)r.Cells["Data Check In"].Value,
-                            CheckOutDate = (DateTime)r.Cells["Data Check Out"].Value,
-                            RoomNumber = Convert.ToInt32(r.Cells["Room Number"].Value)
-                        });
-
-                        foreach (var room in hotel.Rooms)
-                        {
-                            if (Convert.ToInt32(r.Cells["Room Number"].Value) == room.RoomNumber)
-                            {
-                                room.SetBusy();
-                            }
-                        }
-                    }
+                    client.CheckInDate = checkInDate;
+                    client.CheckOutDate = checkOutDate;
                 }
                 else
                 {
-                    for (int i = 0; i < dgBookingChange.Rows.Count; i++)
-                    {
-                        var r = dgBookingChange.Rows[i];
-                        if (r.IsNewRow || i >= hotel.Clients.Count) break;
-                        var cli = hotel.Clients[i];
-
-                        if (r.Cells["Room Number"].Value == null ||
-                            r.Cells["Check In"].Value == null ||
-                            r.Cells["Check Out"].Value == null ||
-                            string.IsNullOrWhiteSpace(r.Cells["Name"].Value?.ToString()) ||
-                            string.IsNullOrWhiteSpace(r.Cells["Surname"].Value?.ToString()) ||
-                            string.IsNullOrWhiteSpace(r.Cells["Phone"].Value?.ToString()))
-                        {
-                            MessageBox.Show("Fill all fields");
-                            return;
-                        }
-
-
-                        cli.Name = r.Cells["Name"].Value as string;
-                        cli.Surname = r.Cells["Surname"].Value as string;
-                        cli.RoomNumber = Convert.ToInt32(r.Cells["Room Number"].Value);
-                        cli.CheckInDate = (DateTime)r.Cells["Data Check In"].Value;
-                        cli.CheckOutDate = (DateTime)r.Cells["Data Check Out"].Value;
-
-                        foreach (var room in hotel.Rooms)
-                        {
-                            if (Convert.ToInt32(r.Cells["Room Number"].Value) != room.RoomNumber)
-                            {
-                                MessageBox.Show("Room not found");
-                                return;
-                            }
-                        }
-
-                        foreach (var room in hotel.Rooms)
-                        {
-                            if (Convert.ToInt32(r.Cells["Room Number"].Value) == room.RoomNumber)
-                            {
-                                room.SetBusy();
-                            }
-                        }
-                    }
-
+                    MessageBox.Show($"Невірний формат дати в рядку {i + 1}. Перевірте дані.");
+                    continue;
                 }
+
+
+                hotel.AddClient(client, hotel);
             }
+
+            hotel.DeleteFileInfo();
+            hotel.SaveToFile();
         }
         private void SaveEmployees()
         {
-            if (!isSearch)
-            {
-                hotel.Employees.Clear();
-                foreach (DataGridViewRow r in dgBookingChange.Rows)
-                {
-                    if (r.IsNewRow) continue;
-                    if (string.IsNullOrEmpty(r.Cells["Name"].Value as string) || string.IsNullOrEmpty(r.Cells["Id"].Value as string) || string.IsNullOrEmpty(r.Cells["Password"].Value as string))
-                    {
-                        MessageBox.Show("Fill all fields");
-                        return;
-                    }
-                    hotel.Employees.Add(new Employee
-                    {
-                        Name = r.Cells["Name"].Value as string,
-                        Id = r.Cells["Id"].Value as string,
-                        Password = r.Cells["Password"].Value as string
-                    });
-                }
-            }
-            else
-            {
-                for (int i = 0; i < dgBookingChange.Rows.Count; i++)
-                {
-                    if (string.IsNullOrEmpty(dgBookingChange.Rows[i].Cells["Name"].Value as string) || string.IsNullOrEmpty(dgBookingChange.Rows[i].Cells["Id"].Value as string) || string.IsNullOrEmpty(dgBookingChange.Rows[i].Cells["Password"].Value as string))
-                    {
-                        MessageBox.Show("Fill all fields");
-                        return;
-                    }
+            hotel.Employees.Clear();
 
-                    var r = dgBookingChange.Rows[i];
-                    if (r.IsNewRow || i >= hotel.Employees.Count) break;
-                    var emp = hotel.Employees[i];
-
-                    emp.Name = r.Cells["Name"].Value as string;
-                    emp.Id = r.Cells["Id"].Value as string;
-                    emp.Password = r.Cells["Password"].Value as string;
-                }
+            for (int i = 0; i < dgBookingChange.Rows.Count - 1; i++)
+            {
+                Employee employee = new Employee();
+                employee.Name = (string)dgBookingChange.Rows[i].Cells[0].Value;
+                employee.Id = (string)dgBookingChange.Rows[i].Cells[1].Value;
+                employee.Password = (string)dgBookingChange.Rows[i].Cells[2].Value;
+                hotel.Employees.Add(employee);
             }
+
+            hotel.DeleteFileInfo();
+            hotel.SaveToFile();
         }
         private void SaveRoom()
         {
-            if (!isSearch)
+            hotel.Rooms.Clear();
+
+            for (int i = 0; i < dgBookingChange.Rows.Count; i++)
             {
-                hotel.Rooms.Clear();
-                foreach (DataGridViewRow r in dgBookingChange.Rows)
+                Room room = new Room();
+                room.RoomNumber = Convert.ToInt32(dgBookingChange.Rows[i].Cells[0].Value);
+                room.Type = (string)dgBookingChange.Rows[i].Cells[1].Value;
+                room.Price = Convert.ToDecimal(dgBookingChange.Rows[i].Cells[2].Value);
+                if ((string)dgBookingChange.Rows[i].Cells[3].Value == "Free")
                 {
-                    if (r.IsNewRow) continue;
-                    if (string.IsNullOrEmpty(r.Cells["Room Type"].Value as string) || string.IsNullOrEmpty(r.Cells["Price"].Value as string))
-                    {
-                        MessageBox.Show("Fill all fields");
-                        return;
-                    }
-                    var room = new Room
-                    {
-                        RoomNumber = Convert.ToInt32(r.Cells["Room Number"].Value),
-                        Type = r.Cells["Room Type"].Value as string,
-                        Price = Convert.ToDecimal(r.Cells["Price"].Value)
-                    };
-                    if ((r.Cells["Status"].Value as string) == "Free") room.SetFree();
-                    else room.SetBusy();
-                    hotel.Rooms.Add(room);
+                    room.SetFree();
                 }
-            }
-            else
-            {
-                for (int i = 0; i < dgBookingChange.Rows.Count; i++)
+                else
                 {
-                    if (string.IsNullOrEmpty(dgBookingChange.Rows[i].Cells["Room Type"].Value as string) || string.IsNullOrEmpty(dgBookingChange.Rows[i].Cells["Price"].Value as string))
-                    {
-                        MessageBox.Show("Fill all fields");
-                        return;
-                    }
-
-                    var r = dgBookingChange.Rows[i];
-                    if (r.IsNewRow || i >= hotel.Rooms.Count) break;
-                    var room = hotel.Rooms[i];
-
-                    room.Type = r.Cells["Room Type"].Value as string;
-                    room.Price = Convert.ToDecimal(r.Cells["Price"].Value);
-
-                    if ((r.Cells["Status"].Value as string) == "Free") room.SetFree();
-                    else room.SetBusy();
+                    room.SetBusy();
                 }
+                hotel.Rooms.Add(room);
             }
+
+            hotel.DeleteFileInfo();
+            hotel.SaveToFile();
         }
         //
         // MENU STRIP buttons File-Save
         //
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            switch (this.Name)
+            if(client)
             {
-                case "fChangeClient":
-                    SaveClients();
-                    isSave = true;
-                    break;
-                case "fChangeEmployee":
-                    SaveEmployees();
-                    isSave = true;
-                    break;
-                case "fChangeRoom":
-                    SaveRoom();
-                    isSave = true;
-                    break;
-                default:
-                    MessageBox.Show("Error");
-                    break;
+                SaveClients();
             }
-            hotel.DeleteFileInfo();
-            hotel.SaveToFile();
-
-            isSearch = false;
-            isSave = true;
-            MessageBox.Show("Дані успішно збережено!");
+            else if (employee)
+            {
+                SaveEmployees();
+            }
+            else if (room)
+            {
+                SaveRoom();
+            }
         }
         //
         // TOOL STRIP buttons
         //
         private void ts_btnAdd_Click(object sender, EventArgs e)
         {
-            switch (this.Name)
+            if(client)
             {
-                case "fChangeClient":
-                    addClientToolStripMenuItem_Click(sender, e);
-                    break;
-                case "fChangeEmployee":
-                    aDDEMPLOYEEToolStripMenuItem_Click(sender, e);
-                    break;
-                case "fChangeRoom":
-                    aDDROOMToolStripMenuItem_Click(sender, e);
-                    break;
-                default:
-                    MessageBox.Show("Error");
-                    break;
+                addClientToolStripMenuItem_Click(sender, e);
             }
-        }
-        private void ts_btnSearch_Click(object sender, EventArgs e)
-        {
-            searchValue = ts_tbSearch.Text;
-            if (string.IsNullOrEmpty(searchValue))
+            else if (employee)
             {
-                MessageBox.Show("Enter search value");
-                return;
+                aDDEMPLOYEEToolStripMenuItem_Click(sender, e);
             }
-
-            searchDataTable = dataTable.Clone();
-            searchDataTable.Rows.Clear();
-
-            switch (this.Name)
+            else if (room)
             {
-                case "fChangeClient":
-                    foreach (var client in clients)
-                    {
-                        if (client.Name == searchValue || client.Surname == searchValue)
-                        {
-                            searchDataTable.Rows.Add(
-                                client.Name,
-                                client.Surname,
-                                client.Phone,
-                                client.RoomNumber,
-                                client.CheckInDate,
-                                client.CheckOutDate
-                            );
-                        }
-                    }
-                    break;
-
-                case "fChangeEmployee":
-                    foreach (var emp in employee)
-                    {
-                        if (emp.Name == searchValue || emp.Id == searchValue)
-                            searchDataTable.Rows.Add(emp.Name, emp.Id, emp.Password);
-                    }
-                    break;
-
-                case "fChangeRoom":
-                    foreach (var room in rooms)
-                    {
-                        if (room.RoomNumber.ToString() == searchValue || room.Type == searchValue)
-                        {
-                            searchDataTable.Rows.Add(
-                                room.RoomNumber,
-                                room.Type,
-                                room.Price,
-                                room.IsFree ? "Free" : "Busy"
-                            );
-                        }
-                    }
-                    break;
-                default:
-                    MessageBox.Show("Error");
-                    return;
-            }
-
-            dgBookingChange.DataSource = searchDataTable;
-            isSearch = true;
-        }
-        private void ts_btnBack_Click(object sender, EventArgs e)
-        {
-            string message = "Do you save changed info? Information will be lost.";
-            string title = "Close Window";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.Yes)
-            {
-                saveToolStripMenuItem_Click(sender, e);
-                isSave = false;
-                isSearch = false;
-                dgBookingChange.DataSource = dataTable;
+                aDDROOMToolStripMenuItem_Click(sender, e);
             }
             else
             {
-                dgBookingChange.DataSource = dataTable;
+                MessageBox.Show("Error");
             }
         }
         private void ts_cbSort_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var actionsByForm = new Dictionary<string, Action[]>
+            if (client)
             {
-                ["fChangeClient"] = new Action[]
+                switch (ts_cbSort.SelectedItem.ToString())
                 {
-                    () => nameToolStripMenuItem_Click(sender, e),
-                    () => surnameToolStripMenuItem_Click(sender, e),
-                    () => roomNumberToolStripMenuItem_Click(sender, e),
-                    () => dataCheckInToolStripMenuItem_Click(sender, e)
-                },
-                ["fChangeEmployee"] = new Action[]
-                {
-                    () => nameEmployeeToolStripMenuItem1_Click(sender, e),
-                    () => idToolStripMenuItem_Click(sender, e)
-                },
-                ["fChangeRoom"] = new Action[]
-                {
-                    () => numberToolStripMenuItem_Click(sender, e),
-                    () => priceToolStripMenuItem_Click(sender, e),
-                    () => statusToolStripMenuItem_Click(sender, e)
+                    case "Name":
+                        nameToolStripMenuItem_Click(sender, e);
+                        break;
+                    case "Surname":
+                        surnameToolStripMenuItem_Click(sender, e);
+                        break;
+                    case "Room Number":
+                        roomNumberToolStripMenuItem_Click(sender, e);
+                        break;
+                    case "Data Check In":
+                        dataCheckInToolStripMenuItem_Click(sender, e);
+                        break;
                 }
-            };
-
-            int selectedIndex = ts_cbSort.SelectedIndex;
-
-            if (actionsByForm.TryGetValue(this.Name, out Action[] actions) && selectedIndex >= 0 && selectedIndex < actions.Length)
-            {
-                actions[selectedIndex]();
             }
-            else
+            else if (employee)
             {
-                MessageBox.Show("Please select the correct option.");
+                switch (ts_cbSort.SelectedItem.ToString())
+                {
+                    case "Name":
+                        nameEmployeeToolStripMenuItem1_Click(sender, e);
+                        break;
+                    case "Id":
+                        idToolStripMenuItem_Click(sender, e);
+                        break;
+                }
+            }
+            else if (room)
+            {
+                switch (ts_cbSort.SelectedItem.ToString())
+                {
+                    case "Room Number":
+                        numberToolStripMenuItem_Click(sender, e);
+                        break;
+                    case "Price":
+                        priceToolStripMenuItem_Click(sender, e);
+                        break;
+                    case "Status":
+                        statusToolStripMenuItem_Click(sender, e);
+                        break;
+                }
             }
         }
         //
@@ -1029,38 +811,40 @@ namespace CurseWork
         //
         private void toolStripMenuItemAdd_Click(object sender, EventArgs e)
         {
-            switch(this.Name)
+            if (client)
             {
-                case "fChangeClient":
-                    addClientToolStripMenuItem_Click(sender, e);
-                    break;
-                case "fChangeEmployee":
-                    aDDEMPLOYEEToolStripMenuItem_Click(sender, e);
-                    break;
-                case "fChangeRoom":
-                    aDDROOMToolStripMenuItem_Click(sender, e);
-                    break;
-                default:
-                    MessageBox.Show("Error");
-                    break;
+                addClientToolStripMenuItem_Click(sender, e);
+            }
+            else if (employee)
+            {
+                aDDEMPLOYEEToolStripMenuItem_Click(sender, e);
+            }
+            else if (room)
+            {
+                aDDROOMToolStripMenuItem_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Error");
             }
         }
         private void toolStripMenuItemDelete_Click(object sender, EventArgs e)
         {
-            switch(this.Name)
+            if (client)
             {
-                case "fChangeClient":
-                    deleteClientToolStripMenuItem_Click(sender, e);
-                    break;
-                case "fChangeEmployee":
-                    dELETEEMPLOYEEToolStripMenuItem_Click(sender, e);
-                    break;
-                case "fChangeRoom":
-                    dELETEROOMToolStripMenuItem_Click(sender, e);
-                    break;
-                default:
-                    MessageBox.Show("Error");
-                    break;
+                deleteClientToolStripMenuItem_Click(sender, e);
+            }
+            else if (employee)
+            {
+                dELETEEMPLOYEEToolStripMenuItem_Click(sender, e);
+            }
+            else if (room)
+            {
+                dELETEROOMToolStripMenuItem_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Error");
             }
         }
         private void toolStripMenuItemSave_Click(object sender, EventArgs e)

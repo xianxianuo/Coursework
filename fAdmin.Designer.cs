@@ -33,8 +33,6 @@
             btnHotelInfo = new Button();
             title = new Label();
             btnClose = new Button();
-            btnChangeRoomInfo = new Button();
-            btnChangeEmployee = new Button();
             pictureBox1 = new PictureBox();
             buttonClose = new Button();
             panel1 = new Panel();
@@ -98,36 +96,6 @@
             btnClose.TabIndex = 17;
             btnClose.UseVisualStyleBackColor = true;
             // 
-            // btnChangeRoomInfo
-            // 
-            btnChangeRoomInfo.BackgroundImage = (Image)resources.GetObject("btnChangeRoomInfo.BackgroundImage");
-            btnChangeRoomInfo.BackgroundImageLayout = ImageLayout.Stretch;
-            btnChangeRoomInfo.FlatStyle = FlatStyle.Flat;
-            btnChangeRoomInfo.Font = new Font("Orange Kid", 15F);
-            btnChangeRoomInfo.ForeColor = SystemColors.ButtonHighlight;
-            btnChangeRoomInfo.Location = new Point(55, 255);
-            btnChangeRoomInfo.Name = "btnChangeRoomInfo";
-            btnChangeRoomInfo.Size = new Size(300, 40);
-            btnChangeRoomInfo.TabIndex = 15;
-            btnChangeRoomInfo.Text = "ROOM INFORMATION";
-            btnChangeRoomInfo.UseVisualStyleBackColor = true;
-            btnChangeRoomInfo.Click += btnChangeRoomInfo_Click;
-            // 
-            // btnChangeEmployee
-            // 
-            btnChangeEmployee.BackgroundImage = (Image)resources.GetObject("btnChangeEmployee.BackgroundImage");
-            btnChangeEmployee.BackgroundImageLayout = ImageLayout.Stretch;
-            btnChangeEmployee.FlatStyle = FlatStyle.Flat;
-            btnChangeEmployee.Font = new Font("Orange Kid", 15F);
-            btnChangeEmployee.ForeColor = SystemColors.ButtonHighlight;
-            btnChangeEmployee.Location = new Point(55, 143);
-            btnChangeEmployee.Name = "btnChangeEmployee";
-            btnChangeEmployee.Size = new Size(300, 40);
-            btnChangeEmployee.TabIndex = 21;
-            btnChangeEmployee.Text = "EMPLOYEES INFORMATION";
-            btnChangeEmployee.UseVisualStyleBackColor = true;
-            btnChangeEmployee.Click += btnChangeEmployee_Click;
-            // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.White;
@@ -159,8 +127,6 @@
             panel1.Controls.Add(btnAddBooking);
             panel1.Controls.Add(btnHotelInfo);
             panel1.Controls.Add(btnChangeBooking);
-            panel1.Controls.Add(btnChangeEmployee);
-            panel1.Controls.Add(btnChangeRoomInfo);
             panel1.Location = new Point(305, 243);
             panel1.Name = "panel1";
             panel1.Size = new Size(400, 400);
@@ -185,7 +151,7 @@
             btnSearchBooking.FlatStyle = FlatStyle.Flat;
             btnSearchBooking.Font = new Font("Orange Kid", 15F);
             btnSearchBooking.ForeColor = SystemColors.ButtonHighlight;
-            btnSearchBooking.Location = new Point(55, 255);
+            btnSearchBooking.Location = new Point(55, 256);
             btnSearchBooking.Name = "btnSearchBooking";
             btnSearchBooking.Size = new Size(300, 40);
             btnSearchBooking.TabIndex = 23;
@@ -200,7 +166,7 @@
             btnAddBooking.FlatStyle = FlatStyle.Flat;
             btnAddBooking.Font = new Font("Orange Kid", 15F);
             btnAddBooking.ForeColor = SystemColors.ButtonHighlight;
-            btnAddBooking.Location = new Point(55, 143);
+            btnAddBooking.Location = new Point(55, 142);
             btnAddBooking.Name = "btnAddBooking";
             btnAddBooking.Size = new Size(300, 40);
             btnAddBooking.TabIndex = 22;
@@ -240,8 +206,6 @@
         private Button btnHotelInfo;
         private Label title;
         private Button btnClose;
-        private Button btnChangeRoomInfo;
-        private Button btnChangeEmployee;
         private PictureBox pictureBox1;
         private Button buttonClose;
         private Panel panel1;

@@ -32,20 +32,7 @@ namespace CurseWork
             {
                 MessageBox.Show("GIF файл не знайдено");
             }
-
-            //set admin or user  
-            if (isAdmin)
-            {
-                btnAddBooking.Visible = false;
-                btnSearchBooking.Visible = false;
-            }
-            else
-            {
-                btnChangeEmployee.Visible = false;
-                btnChangeRoomInfo.Visible = false;
-            }
         }
-
         private void btnChangeBooking_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -53,26 +40,17 @@ namespace CurseWork
             fChangeClient.isAdmin = isAdmin;
             fChangeClient.Show();
         }
-
-        private void btnChangeRoomInfo_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            fChangeInformation fChangeRoom = new fChangeInformation();
-            fChangeRoom.isAdmin = isAdmin;
-            fChangeRoom.Show();
-        }
-
         private void btnHotelInfo_Click(object sender, EventArgs e)
         {
             if (isAdmin)
             {
                 this.Hide();
-                fChangeHotel changeHotel = new fChangeHotel();
+                fChangeHotel changeHotel = new fChangeHotel(true);
                 changeHotel.Show();
             }
             else
             {
-                fChangeHotel showHotel = new fChangeHotel();
+                fChangeHotel showHotel = new fChangeHotel(false);
                 showHotel.Show();
             }
             this.Hide();
@@ -82,27 +60,25 @@ namespace CurseWork
         {
             Application.Exit();
         }
-
-        private void btnChangeEmployee_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            fChangeInformation fChangeEmployee = new fChangeInformation();
-            fChangeEmployee.isAdmin = isAdmin;
-            fChangeEmployee.Show();
-        }
-
         private void btnAddBooking_Click(object sender, EventArgs e)
         {
             this.Hide();
             fAddBooking fAddBooking = new fAddBooking();
             fAddBooking.Show();
         }
-
         private void btnSearchBooking_Click(object sender, EventArgs e)
         {
             this.Hide();
-            fSearchBooking fSearchBooking = new fSearchBooking();
-            fSearchBooking.Show();
+            if (isAdmin)
+            {
+                fSearchBooking fSearchBooking = new fSearchBooking(true);
+                fSearchBooking.Show();
+            }
+            else
+            {
+                fSearchBooking fSearchBooking = new fSearchBooking(false);
+                fSearchBooking.Show();
+            }
         }
     }
 }
