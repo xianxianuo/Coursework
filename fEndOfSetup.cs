@@ -84,39 +84,28 @@ namespace CurseWork
                     MessageBox.Show("Please add at least one room before proceeding.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                foreach (DataGridViewRow row in dgTableEndSetInfo.Rows)
+                for (int i = 0; i < dgTableEndSetInfo.Rows.Count - 1; i++)
                 {
-                    // Check if the room number is empty or not a number
+                    DataGridViewRow row = dgTableEndSetInfo.Rows[i];
+
+                    // Check if the Id is empty
                     if (row.Cells[0].Value == null || row.Cells[0].Value.ToString() == "")
                     {
-                        MessageBox.Show("Room Number cannot be empty! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Id cannot be empty! Row: " + (i + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-                    else if (!row.Cells[0].Value.ToString().All(char.IsDigit))
-                    {
-                        MessageBox.Show("Room Number must be a number! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    // Check if the room type is empty
+
+                    // Check if the Name is empty
                     if (row.Cells[1].Value == null || row.Cells[1].Value.ToString() == "")
                     {
-                        MessageBox.Show("Room Type cannot be empty! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Name cannot be empty! Row: " + (i + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-                    // Check if the price is empty or not a valid decimal or equal to zero
+
+                    // Check if the Password is empty
                     if (row.Cells[2].Value == null || row.Cells[2].Value.ToString() == "")
                     {
-                        MessageBox.Show("Price cannot be empty! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    else if (!decimal.TryParse(row.Cells[2].Value.ToString(), out _))
-                    {
-                        MessageBox.Show("Price must be a valid decimal number! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    else if (Convert.ToDecimal(row.Cells[2].Value) <= 0)
-                    {
-                        MessageBox.Show("Price must be greater than zero! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Password cannot be empty! Row: " + (i + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                 }
@@ -190,29 +179,35 @@ namespace CurseWork
             else
             {
                 // Validate the employee information before saving
-                if (dgTableEndSetInfo.Rows.Count == 0)
+                if (dgTableEndSetInfo.Rows.Count == 0 || dgTableEndSetInfo.Rows.Count == 1)
                 {
                     MessageBox.Show("Please add at least one employee before proceeding.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                foreach (DataGridViewRow row in dgTableEndSetInfo.Rows)
+                for (int i = 0; i < dgTableEndSetInfo.Rows.Count; i++)
                 {
+                    DataGridViewRow row = dgTableEndSetInfo.Rows[i];
+
+                    if (row.IsNewRow) continue;
+
                     // Check if the Id is empty
                     if (row.Cells[0].Value == null || row.Cells[0].Value.ToString() == "")
                     {
-                        MessageBox.Show("Id cannot be empty! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Id cannot be empty! Row: " + (i + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
+
                     // Check if the Name is empty
                     if (row.Cells[1].Value == null || row.Cells[1].Value.ToString() == "")
                     {
-                        MessageBox.Show("Name cannot be empty! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Name cannot be empty! Row: " + (i + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
+
                     // Check if the Password is empty
                     if (row.Cells[2].Value == null || row.Cells[2].Value.ToString() == "")
                     {
-                        MessageBox.Show("Password cannot be empty! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Password cannot be empty! Row: " + (i + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                 }
@@ -259,7 +254,7 @@ namespace CurseWork
         {
             if (dgTableEndSetInfo.SelectedRows.Count > 0)
             {
-                foreach (DataGridViewRow row in dgTableEndSetInfo.SelectedRows)
+                foreach (DataGridViewRow row in dgTableEndSetInfo.Rows)
                 {
                     if (!row.IsNewRow)
                     {

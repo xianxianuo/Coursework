@@ -52,7 +52,7 @@
             buttonStart.FlatStyle = FlatStyle.Flat;
             buttonStart.Font = new Font("Orange Kid", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonStart.ForeColor = Color.WhiteSmoke;
-            buttonStart.Location = new Point(191, 523);
+            buttonStart.Location = new Point(189, 446);
             buttonStart.Margin = new Padding(3, 2, 3, 2);
             buttonStart.Name = "buttonStart";
             buttonStart.Size = new Size(400, 50);
@@ -79,7 +79,7 @@
             labelName.BackColor = Color.Transparent;
             labelName.Font = new Font("Orange Kid", 20F);
             labelName.ForeColor = Color.FromArgb(3, 37, 140);
-            labelName.Location = new Point(190, 226);
+            labelName.Location = new Point(72, 241);
             labelName.Name = "labelName";
             labelName.Size = new Size(87, 41);
             labelName.TabIndex = 10;
@@ -88,11 +88,12 @@
             // tbHotelName
             // 
             tbHotelName.BackColor = Color.FromArgb(20, 60, 178);
+            tbHotelName.Font = new Font("Orange Kid", 15F);
             tbHotelName.ForeColor = SystemColors.Window;
-            tbHotelName.Location = new Point(191, 261);
+            tbHotelName.Location = new Point(72, 284);
             tbHotelName.Margin = new Padding(3, 2, 3, 2);
             tbHotelName.Name = "tbHotelName";
-            tbHotelName.Size = new Size(400, 29);
+            tbHotelName.Size = new Size(329, 37);
             tbHotelName.TabIndex = 1;
             // 
             // labelAddress
@@ -101,7 +102,7 @@
             labelAddress.BackColor = Color.Transparent;
             labelAddress.Font = new Font("Orange Kid", 20F);
             labelAddress.ForeColor = Color.FromArgb(3, 37, 140);
-            labelAddress.Location = new Point(190, 292);
+            labelAddress.Location = new Point(72, 323);
             labelAddress.Name = "labelAddress";
             labelAddress.Size = new Size(116, 41);
             labelAddress.TabIndex = 10;
@@ -110,11 +111,12 @@
             // tbAdress
             // 
             tbAdress.BackColor = Color.FromArgb(20, 60, 178);
+            tbAdress.Font = new Font("Orange Kid", 15F);
             tbAdress.ForeColor = SystemColors.Window;
-            tbAdress.Location = new Point(191, 330);
+            tbAdress.Location = new Point(72, 366);
             tbAdress.Margin = new Padding(3, 2, 3, 2);
             tbAdress.Name = "tbAdress";
-            tbAdress.Size = new Size(400, 29);
+            tbAdress.Size = new Size(329, 37);
             tbAdress.TabIndex = 2;
             // 
             // labelOfRooms
@@ -123,7 +125,7 @@
             labelOfRooms.BackColor = Color.Transparent;
             labelOfRooms.Font = new Font("Orange Kid", 20F);
             labelOfRooms.ForeColor = Color.FromArgb(3, 37, 140);
-            labelOfRooms.Location = new Point(190, 361);
+            labelOfRooms.Location = new Point(443, 241);
             labelOfRooms.Name = "labelOfRooms";
             labelOfRooms.Size = new Size(212, 41);
             labelOfRooms.TabIndex = 10;
@@ -146,11 +148,12 @@
             // tbNumberOfRooms
             // 
             tbNumberOfRooms.BackColor = Color.FromArgb(20, 60, 178);
+            tbNumberOfRooms.Font = new Font("Orange Kid", 15F);
             tbNumberOfRooms.ForeColor = SystemColors.Window;
-            tbNumberOfRooms.Location = new Point(191, 399);
+            tbNumberOfRooms.Location = new Point(443, 284);
             tbNumberOfRooms.Margin = new Padding(3, 2, 3, 2);
             tbNumberOfRooms.Name = "tbNumberOfRooms";
-            tbNumberOfRooms.Size = new Size(400, 29);
+            tbNumberOfRooms.Size = new Size(263, 37);
             tbNumberOfRooms.TabIndex = 3;
             // 
             // label1
@@ -168,11 +171,12 @@
             // tbNumOfEmployee
             // 
             tbNumOfEmployee.BackColor = Color.FromArgb(20, 60, 178);
+            tbNumOfEmployee.Font = new Font("Orange Kid", 15F);
             tbNumOfEmployee.ForeColor = SystemColors.Window;
-            tbNumOfEmployee.Location = new Point(191, 468);
+            tbNumOfEmployee.Location = new Point(443, 366);
             tbNumOfEmployee.Margin = new Padding(3, 2, 3, 2);
             tbNumOfEmployee.Name = "tbNumOfEmployee";
-            tbNumOfEmployee.Size = new Size(400, 29);
+            tbNumOfEmployee.Size = new Size(263, 37);
             tbNumOfEmployee.TabIndex = 4;
             // 
             // label2
@@ -181,7 +185,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Orange Kid", 20F);
             label2.ForeColor = Color.FromArgb(3, 37, 140);
-            label2.Location = new Point(190, 430);
+            label2.Location = new Point(443, 323);
             label2.Name = "label2";
             label2.Size = new Size(259, 41);
             label2.TabIndex = 18;
@@ -193,7 +197,7 @@
             lbTextFail.BackColor = Color.Transparent;
             lbTextFail.Font = new Font("Orange Kid", 20F);
             lbTextFail.ForeColor = Color.White;
-            lbTextFail.Location = new Point(18, 632);
+            lbTextFail.Location = new Point(12, 535);
             lbTextFail.Name = "lbTextFail";
             lbTextFail.Size = new Size(51, 41);
             lbTextFail.TabIndex = 19;
@@ -207,7 +211,7 @@
             BackColor = Color.FromArgb(248, 243, 217);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(782, 682);
+            ClientSize = new Size(782, 582);
             ControlBox = false;
             Controls.Add(lbTextFail);
             Controls.Add(tbNumOfEmployee);
@@ -226,8 +230,8 @@
             Font = new Font("Jersey 10", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
-            MaximumSize = new Size(800, 700);
-            MinimumSize = new Size(800, 700);
+            MaximumSize = new Size(800, 600);
+            MinimumSize = new Size(800, 600);
             Name = "fAddHotel";
             StartPosition = FormStartPosition.CenterScreen;
             ResumeLayout(false);
