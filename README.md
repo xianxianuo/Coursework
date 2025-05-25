@@ -1,5 +1,4 @@
-﻿
-# CurseWork
+﻿# CurseWork
 
 **CurseWork** is a desktop hotel management database application created for educational purposes.
 
@@ -35,22 +34,6 @@ This application allows you to:
 - Add and search bookings
 - Login system
 
-## 🚀 Getting Started
-
-### Requirements
-- Windows OS
-- .NET Framework
-- Visual Studio
-
-### Steps
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your_username/CurseWork.git
-   ```
-2. Open the solution in Visual Studio.
-3. Create a folder named `Files` in the root directory.
-4. Run the application. It will launch `fAddHotel` or `fLogin` based on the data file.
-
 ## 🧪 Data Structure
 
 All data is stored in `Files/HotelData.json`. A backup is saved to `HotelDataCopy.json`.
@@ -72,45 +55,3 @@ Pull requests are welcome! Fork the repo, make changes, and submit a PR with a c
 - **Contributors:** If you want to contribute, please fork the repository and create a pull request.
 - **License:** This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 - **Support:** You can donate to support the project via [Monobank](https://monobank.ua/) using the jar https://send.monobank.ua/jar/9tsXkSkkdJ. Thank you for your support!
-
-## 🧑‍💼 How to Use
-
-### First Launch
-When you start the program for the first time, you'll be prompted to fill out all hotel information.
-
-### Logging In
-- To log in as a **manager**, use the default credentials:
-  - **Username:** `master`
-  - **Password:** `master`
-- These can be changed in the file `fLogin.cs`, around line 60:
-  ```csharp
-  if (login == "master" && password == "master")
-  {
-      this.Hide();
-      fAdmin admin = new fAdmin(true); // Admin mode
-      admin.ShowDialog();
-      return;
-  }
-  ```
-
-### Employee Passwords
-All other employee passwords are stored in the `Files/HotelData.json` file.
-
-### File Handling on Startup
-Every time the application launches:
-- The data file `HotelData.json` is copied to `HotelDataCopy.json` as a backup.
-
-### Customizing File Loading
-To use a different data file:
-1. Place your file in the `Files` folder.
-2. Modify the filename in the `Program.cs` file (around line 16):
-   ```csharp
-   string filePath = Path.Combine(folderPath, "HotelData.json");
-   ```
-
-You can also adjust the file path itself:
-```csharp
-string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-string folderPath = Path.Combine(projectDirectory, "Files");
-string filePath = Path.Combine(folderPath, "HotelData.json");
-```
