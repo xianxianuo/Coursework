@@ -119,13 +119,6 @@ namespace CurseWork
                         MessageBox.Show("Price must be greater than zero! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-                    // Check for duplicate room numbers
-                    int roomNumber = Convert.ToInt32(row.Cells[0].Value);
-                    if (hotel.Rooms.Any(r => r.RoomNumber == roomNumber))
-                    {
-                        MessageBox.Show($"Room Number {roomNumber} already exists!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
                 }
 
                 hotel.Rooms.Clear(); // Clear existing rooms to avoid duplicates  
