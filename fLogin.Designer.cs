@@ -110,9 +110,8 @@
             btnShowPassword.BackgroundImage = (Image)resources.GetObject("btnShowPassword.BackgroundImage");
             btnShowPassword.BackgroundImageLayout = ImageLayout.Stretch;
             btnShowPassword.FlatAppearance.BorderSize = 0;
-            btnShowPassword.FlatStyle = FlatStyle.Popup;
-            btnShowPassword.Image = (Image)resources.GetObject("btnShowPassword.Image");
-            btnShowPassword.Location = new Point(422, 366);
+            btnShowPassword.FlatStyle = FlatStyle.Flat;
+            btnShowPassword.Location = new Point(434, 366);
             btnShowPassword.Name = "btnShowPassword";
             btnShowPassword.Size = new Size(40, 40);
             btnShowPassword.TabIndex = 0;
@@ -180,7 +179,6 @@
             MinimumSize = new Size(550, 550);
             Name = "fLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Load += fLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

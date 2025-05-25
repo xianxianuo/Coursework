@@ -23,11 +23,11 @@ namespace CurseWork
             {
                 if (string.IsNullOrWhiteSpace(content))
                 {
+                    MessageBox.Show("Hotel data not found!", "File checking", MessageBoxButtons.OK);
                     Application.Run(new fAddHotel());
                 }
                 else
                 {
-                    MessageBox.Show("Hotel data loaded!", "File checking", MessageBoxButtons.OK);
                     File.Copy(filePath, filePath2, true);
                     Application.Run(new fLogin());
                 }
@@ -38,12 +38,12 @@ namespace CurseWork
                 {
                     if (string.IsNullOrWhiteSpace(content2))
                     {
+                        MessageBox.Show("Hotel data not found!", "File checking", MessageBoxButtons.OK);
                         Application.Run(new fAddHotel());
                     }
                     else
                     {
                         File.Copy(filePath2, filePath, true);
-                        MessageBox.Show("Hotel data loaded!", "File checking", MessageBoxButtons.OK);
                         Application.Run(new fLogin());
                     }
                 }

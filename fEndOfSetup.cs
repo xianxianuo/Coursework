@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 
 namespace CurseWork
 {
@@ -31,7 +23,6 @@ namespace CurseWork
             InitializeComponent();
             hotel = Hotel.LoadFromFile();
             rooms = hotel.Rooms;
-
         }
         private void fEndOfSetup_Load(object sender, EventArgs e)
         {
@@ -88,7 +79,56 @@ namespace CurseWork
         {
             if (isChanged == false)
             {
-                hotel.Rooms.Clear(); // Clear existing rooms to avoid duplicates
+                if (dgTableEndSetInfo.Rows.Count == 0)
+                {
+                    MessageBox.Show("Please add at least one room before proceeding.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                foreach (DataGridViewRow row in dgTableEndSetInfo.Rows)
+                {
+                    // Check if the room number is empty or not a number
+                    if (row.Cells[0].Value == null || row.Cells[0].Value.ToString() == "")
+                    {
+                        MessageBox.Show("Room Number cannot be empty! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    else if (!row.Cells[0].Value.ToString().All(char.IsDigit))
+                    {
+                        MessageBox.Show("Room Number must be a number! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    // Check if the room type is empty
+                    if (row.Cells[1].Value == null || row.Cells[1].Value.ToString() == "")
+                    {
+                        MessageBox.Show("Room Type cannot be empty! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    // Check if the price is empty or not a valid decimal or equal to zero
+                    if (row.Cells[2].Value == null || row.Cells[2].Value.ToString() == "")
+                    {
+                        MessageBox.Show("Price cannot be empty! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    else if (!decimal.TryParse(row.Cells[2].Value.ToString(), out _))
+                    {
+                        MessageBox.Show("Price must be a valid decimal number! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    else if (Convert.ToDecimal(row.Cells[2].Value) <= 0)
+                    {
+                        MessageBox.Show("Price must be greater than zero! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    // Check for duplicate room numbers
+                    int roomNumber = Convert.ToInt32(row.Cells[0].Value);
+                    if (hotel.Rooms.Any(r => r.RoomNumber == roomNumber))
+                    {
+                        MessageBox.Show($"Room Number {roomNumber} already exists!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                hotel.Rooms.Clear(); // Clear existing rooms to avoid duplicates  
 
                 for (int i = 0; i < dgTableEndSetInfo.Rows.Count - 1; i++)
                 {
@@ -137,11 +177,10 @@ namespace CurseWork
                 }
 
                 isChanged = true;
-                MessageBox.Show("Please remember password that you saved for your account! \n First moderator name (yours) must be 'master' for correct work!");
                 btnStart.Text = "END OF SETUP";
                 btnRandom.Visible = false;
 
-                // Clear and reconfigure the dataTable for employees
+                // Clear and reconfigure the dataTable for employees  
                 dataTable.Clear();
                 dataTable.Columns.Clear();
                 dataTable.Columns.Add("Id", typeof(string));
@@ -149,7 +188,7 @@ namespace CurseWork
                 dataTable.Columns.Add("Password", typeof(string));
                 dgTableEndSetInfo.DataSource = dataTable;
 
-                // Populate the dataTable with existing employees
+                // Populate the dataTable with existing employees  
                 foreach (Employee employee in hotel.Employees)
                 {
                     dataTable.Rows.Add(employee.Id, employee.Name, employee.Password);
@@ -157,7 +196,35 @@ namespace CurseWork
             }
             else
             {
-                hotel.Employees.Clear(); // Clear existing employees to avoid duplicates
+                // Validate the employee information before saving
+                if (dgTableEndSetInfo.Rows.Count == 0)
+                {
+                    MessageBox.Show("Please add at least one employee before proceeding.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                foreach (DataGridViewRow row in dgTableEndSetInfo.Rows)
+                {
+                    // Check if the Id is empty
+                    if (row.Cells[0].Value == null || row.Cells[0].Value.ToString() == "")
+                    {
+                        MessageBox.Show("Id cannot be empty! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    // Check if the Name is empty
+                    if (row.Cells[1].Value == null || row.Cells[1].Value.ToString() == "")
+                    {
+                        MessageBox.Show("Name cannot be empty! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    // Check if the Password is empty
+                    if (row.Cells[2].Value == null || row.Cells[2].Value.ToString() == "")
+                    {
+                        MessageBox.Show("Password cannot be empty! Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                hotel.Employees.Clear(); // Clear existing employees to avoid duplicates  
 
                 for (int i = 0; i < dgTableEndSetInfo.Rows.Count - 1; i++)
                 {

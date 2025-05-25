@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fAdmin));
             btnChangeBooking = new Button();
             btnHotelInfo = new Button();
-            title = new Label();
             btnClose = new Button();
             pictureBox1 = new PictureBox();
             buttonClose = new Button();
@@ -72,18 +71,6 @@
             btnHotelInfo.Text = "HOTEL INFORMATION";
             btnHotelInfo.UseVisualStyleBackColor = true;
             btnHotelInfo.Click += btnHotelInfo_Click;
-            // 
-            // title
-            // 
-            title.AutoSize = true;
-            title.BackColor = Color.Transparent;
-            title.Font = new Font("Orange Kid", 25F);
-            title.ForeColor = Color.White;
-            title.Location = new Point(26, 16);
-            title.Name = "title";
-            title.Size = new Size(222, 50);
-            title.TabIndex = 20;
-            title.Text = "MANAGEMENT";
             // 
             // btnClose
             // 
@@ -138,7 +125,7 @@
             labelTitle.BackColor = Color.Transparent;
             labelTitle.Font = new Font("Orange Kid", 35F, FontStyle.Bold);
             labelTitle.ForeColor = Color.FromArgb(3, 37, 140);
-            labelTitle.Location = new Point(31, 47);
+            labelTitle.Location = new Point(37, 47);
             labelTitle.Name = "labelTitle";
             labelTitle.Size = new Size(382, 71);
             labelTitle.TabIndex = 24;
@@ -185,7 +172,6 @@
             Controls.Add(panel1);
             Controls.Add(buttonClose);
             Controls.Add(pictureBox1);
-            Controls.Add(title);
             Controls.Add(btnClose);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
@@ -197,14 +183,12 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Button btnChangeBooking;
         private Button btnHotelInfo;
-        private Label title;
         private Button btnClose;
         private PictureBox pictureBox1;
         private Button buttonClose;

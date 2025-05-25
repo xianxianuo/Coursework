@@ -71,12 +71,12 @@
             // tbSearch
             // 
             tbSearch.BackColor = Color.FromArgb(20, 60, 178);
-            tbSearch.Font = new Font("Segoe UI", 15F);
+            tbSearch.Font = new Font("Orange Kid", 15F);
             tbSearch.ForeColor = SystemColors.Window;
             tbSearch.Location = new Point(138, 238);
             tbSearch.Margin = new Padding(3, 2, 3, 2);
             tbSearch.Name = "tbSearch";
-            tbSearch.Size = new Size(400, 41);
+            tbSearch.Size = new Size(400, 37);
             tbSearch.TabIndex = 19;
             // 
             // labelTitle

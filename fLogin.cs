@@ -1,15 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace CurseWork
+﻿namespace CurseWork
 {
     public partial class fLogin : Form
     {
@@ -26,9 +15,6 @@ namespace CurseWork
             this.DoubleBuffered = true;
             hidePath = Path.Combine(basePath, "hide.png");
             showPath = Path.Combine(basePath, "show.png");
-        }
-        private void fLogin_Load(object sender, EventArgs e)
-        {
         }
         /// This method is used to handle the Enter key press event
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -57,7 +43,7 @@ namespace CurseWork
             }
 
             // Admin login
-            if (login == "master" && password == "master")
+            if (login == "master" && password == "master") // Admin credentials
             {
                 this.Hide();
                 fAdmin admin = new fAdmin(true); // Admin mode

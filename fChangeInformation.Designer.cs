@@ -148,6 +148,7 @@
             ts_btnDelete.Margin = new Padding(0);
             ts_btnDelete.Name = "ts_btnDelete";
             ts_btnDelete.Size = new Size(40, 40);
+            ts_btnDelete.Click += toolStripMenuItemDelete_Click;
             // 
             // ts_cbSort
             // 
@@ -194,13 +195,13 @@
             contextMenuStrip.Name = "contextMenuStrip";
             contextMenuStrip.ShowCheckMargin = true;
             contextMenuStrip.ShowImageMargin = false;
-            contextMenuStrip.Size = new Size(203, 76);
+            contextMenuStrip.Size = new Size(211, 104);
             // 
             // toolStripMenuItemAdd
             // 
             toolStripMenuItemAdd.Name = "toolStripMenuItemAdd";
-            toolStripMenuItemAdd.ShortcutKeys = Keys.Control | Keys.V;
-            toolStripMenuItemAdd.Size = new Size(202, 24);
+            toolStripMenuItemAdd.ShortcutKeys = Keys.Control | Keys.A;
+            toolStripMenuItemAdd.Size = new Size(210, 24);
             toolStripMenuItemAdd.Text = "Add";
             toolStripMenuItemAdd.Click += toolStripMenuItemAdd_Click;
             // 
@@ -208,7 +209,7 @@
             // 
             toolStripMenuItemDelete.Name = "toolStripMenuItemDelete";
             toolStripMenuItemDelete.ShortcutKeys = Keys.Control | Keys.X;
-            toolStripMenuItemDelete.Size = new Size(202, 24);
+            toolStripMenuItemDelete.Size = new Size(210, 24);
             toolStripMenuItemDelete.Text = "Delete";
             toolStripMenuItemDelete.Click += toolStripMenuItemDelete_Click;
             // 
@@ -216,7 +217,7 @@
             // 
             toolStripMenuItemSave.Name = "toolStripMenuItemSave";
             toolStripMenuItemSave.ShortcutKeys = Keys.Control | Keys.S;
-            toolStripMenuItemSave.Size = new Size(202, 24);
+            toolStripMenuItemSave.Size = new Size(210, 24);
             toolStripMenuItemSave.Text = "Save to file";
             toolStripMenuItemSave.Click += toolStripMenuItemSave_Click;
             // 

@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace CurseWork
+﻿namespace CurseWork
 {
     public partial class fChangeHotel : Form
     {
@@ -40,7 +30,7 @@ namespace CurseWork
         {
             tbName.Text = hotel.Name;
             tbAddress.Text = hotel.Address;
-            tbClients.Text = rooms.Count.ToString();
+            tbClients.Text = hotel.Clients.Count.ToString();
             tbEmployees.Text = employees.Count.ToString();
             tbClients.ReadOnly = true;
             tbEmployees.ReadOnly = true;
@@ -63,12 +53,17 @@ namespace CurseWork
         {
             if (tbName.Text != hotel.Name || tbAddress.Text != hotel.Address)
             {
-                string message = "Do you want to close this window? Information will be lost.";
+                string message = "Do you want to save changes before closing?";
                 string title = "Close Window";
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 DialogResult result = MessageBox.Show(message, title, buttons);
                 if (result == DialogResult.Yes)
                 {
+                    Exit();
+                }
+                else
+                {
+                    buttonSave_Click(sender, e);
                     Exit();
                 }
             }

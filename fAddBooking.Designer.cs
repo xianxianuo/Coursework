@@ -278,7 +278,6 @@
             MinimumSize = new Size(800, 700);
             Name = "fAddBooking";
             StartPosition = FormStartPosition.CenterScreen;
-            Load += fAddBooking_Load;
             ResumeLayout(false);
             PerformLayout();
         }

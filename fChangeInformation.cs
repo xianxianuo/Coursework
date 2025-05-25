@@ -1,15 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace CurseWork
 {
@@ -233,6 +223,7 @@ namespace CurseWork
             dataTable.Columns.Add("Room Type", typeof(string));
             dataTable.Columns.Add("Price", typeof(decimal));
             dataTable.Columns.Add("Status", typeof(string));
+            dataTable.Columns[3].ReadOnly = true; //make status column read only
 
             rooms.Sort(new CmprtRoomsByNumber());
 
@@ -577,32 +568,53 @@ namespace CurseWork
         //
         private void SaveClients()
         {
+            foreach (DataGridViewRow row in dgBookingChange.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                if (row.Cells[3].Value == null || !int.TryParse(row.Cells[3].Value.ToString(), out int roomNumber))
+                {
+                    MessageBox.Show("Invalid Room Number in row " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (row.Cells[4].Value == null || !DateTime.TryParse(row.Cells[4].Value.ToString(), out DateTime checkInDate) || checkInDate < DateTime.Now)
+                {
+                    MessageBox.Show("Check-In date cannot be in the past or empty in row " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (row.Cells[5].Value == null || !DateTime.TryParse(row.Cells[5].Value.ToString(), out DateTime checkOutDate) || checkOutDate <= checkInDate)
+                {
+                    MessageBox.Show("Check-Out date must be after Check-In date in row " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                for (int col = 0; col <= 2; col++)
+                {
+                    if (row.Cells[col].Value == null || string.IsNullOrWhiteSpace(row.Cells[col].Value.ToString()))
+                    {
+                        MessageBox.Show("Please fill all fields before saving. Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+            }
+
             hotel.Clients.Clear();
 
             for (int i = 0; i < dgBookingChange.Rows.Count - 1; i++)
             {
+                if (dgBookingChange.Rows[i].IsNewRow) continue;
 
-                Client client = new Client();
-
-                client.Name = (string)dgBookingChange.Rows[i].Cells[0].Value;
-                client.Surname = (string)dgBookingChange.Rows[i].Cells[1].Value;
-                client.Phone = (string)dgBookingChange.Rows[i].Cells[2].Value;
-                client.RoomNumber = Convert.ToInt32(dgBookingChange.Rows[i].Cells[3].Value);
-
-                object checkInValue = dgBookingChange.Rows[i].Cells[4].Value;
-                object checkOutValue = dgBookingChange.Rows[i].Cells[5].Value;
-
-                if (checkInValue is DateTime checkInDate && checkOutValue is DateTime checkOutDate)
+                Client client = new Client
                 {
-                    client.CheckInDate = checkInDate;
-                    client.CheckOutDate = checkOutDate;
-                }
-                else
-                {
-                    MessageBox.Show($"Невірний формат дати в рядку {i + 1}. Перевірте дані.");
-                    continue;
-                }
-
+                    Name = dgBookingChange.Rows[i].Cells[0].Value?.ToString(),
+                    Surname = dgBookingChange.Rows[i].Cells[1].Value?.ToString(),
+                    Phone = dgBookingChange.Rows[i].Cells[2].Value?.ToString(),
+                    RoomNumber = Convert.ToInt32(dgBookingChange.Rows[i].Cells[3].Value),
+                    CheckInDate = DateTime.Parse(dgBookingChange.Rows[i].Cells[4].Value?.ToString()),
+                    CheckOutDate = DateTime.Parse(dgBookingChange.Rows[i].Cells[5].Value?.ToString())
+                };
 
                 hotel.AddClient(client, hotel);
             }
@@ -610,8 +622,20 @@ namespace CurseWork
             hotel.DeleteFileInfo();
             hotel.SaveToFile();
         }
+
         private void SaveEmployees()
         {
+            foreach (DataGridViewRow row in dgBookingChange.Rows)
+            {
+                if (string.IsNullOrWhiteSpace(row.Cells[0].Value.ToString()) ||
+                    string.IsNullOrWhiteSpace(row.Cells[1].Value.ToString()) ||
+                    string.IsNullOrWhiteSpace(row.Cells[2].Value.ToString()))
+                {
+                    MessageBox.Show("Please fill all fields before saving. Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
             hotel.Employees.Clear();
 
             for (int i = 0; i < dgBookingChange.Rows.Count - 1; i++)
@@ -628,6 +652,32 @@ namespace CurseWork
         }
         private void SaveRoom()
         {
+            foreach (DataGridViewRow row in dgBookingChange.Rows)
+            {
+                if (!int.TryParse(row.Cells[0].Value.ToString(), out int roomNumber))
+                {
+                    MessageBox.Show("Invalid Room Number in row " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(row.Cells[1].Value.ToString()) ||
+                    string.IsNullOrWhiteSpace(row.Cells[3].Value.ToString()))
+                {
+                    MessageBox.Show("Please fill all fields before saving. Row: " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (!decimal.TryParse(row.Cells[2].Value.ToString(), out decimal price) || price < 0)
+                {
+                    MessageBox.Show("Invalid Price in row " + (row.Index + 1), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                int roomNumberEx = Convert.ToInt32(row.Cells[0].Value);
+                if (hotel.Rooms.Any(r => r.RoomNumber == roomNumberEx))
+                {
+                    MessageBox.Show($"Room Number {roomNumberEx} already exists!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
             hotel.Rooms.Clear();
 
             for (int i = 0; i < dgBookingChange.Rows.Count; i++)

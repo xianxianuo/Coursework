@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace CurseWork
+﻿namespace CurseWork
 {
     public partial class fAddHotel : Form
     {
@@ -35,14 +25,34 @@ namespace CurseWork
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            if(string.IsNullOrEmpty(tbAdress.Text)
+                || string.IsNullOrEmpty(tbHotelName.Text)
+                || string.IsNullOrEmpty(tbNumberOfRooms.Text)
+                || string.IsNullOrEmpty(tbNumOfEmployee.Text))
+            {
+                MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!int.TryParse(tbNumberOfRooms.Text, out int numberOfRooms) || numberOfRooms <= 0)
+            {
+                MessageBox.Show("Please enter a valid number of rooms.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!int.TryParse(tbNumOfEmployee.Text, out int numOfEmployees) || numOfEmployees <= 0)
+            {
+                MessageBox.Show("Please enter a valid number of employees.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             hotel = new Hotel();
             hotel.Name = tbHotelName.Text;
             hotel.Address = tbAdress.Text;
             hotel.NumberOfRooms = Convert.ToInt32(tbNumberOfRooms.Text);
+
             hotel.Clients = new List<Client>();
             hotel.Rooms = new List<Room>(); // Initialize the Rooms property
 
-            int numOfEmployees = Convert.ToInt32(tbNumOfEmployee.Text);
+            numOfEmployees = Convert.ToInt32(tbNumOfEmployee.Text);
             hotel.AddEmployees(numOfEmployees);
 
             for (int i = 1; i <= hotel.NumberOfRooms; i++)

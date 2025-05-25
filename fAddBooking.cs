@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Text.RegularExpressions;
 
 namespace CurseWork
 {
@@ -54,14 +46,35 @@ namespace CurseWork
         {
             if (string.IsNullOrWhiteSpace(tbName.Text) ||
                 string.IsNullOrWhiteSpace(tbSurname.Text) ||
-                string.IsNullOrWhiteSpace(tbPhoneNum.Text) ||
-                cbRoomNumber.SelectedItem == null)
+                string.IsNullOrWhiteSpace(tbPhoneNum.Text))
             {
-                MessageBox.Show("Please fill in all fields.");
+                MessageBox.Show("Please fill in all fields!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (dtpDateSecond.Value.Date <= dtpDateFirst.Value.Date)
             {
-                MessageBox.Show("Check-out date cannot be earlier than check-in date.");
+                MessageBox.Show("Check-out date cannot be earlier than check-in date!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (dtpDateFirst.Value.Date < DateTime.Now.Date)
+            {
+                MessageBox.Show("Check-in date cannot be in the past!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (dtpDateSecond.Value.Date < DateTime.Now.Date)
+            {
+                MessageBox.Show("Check-out date cannot be in the past!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (cbRoomNumber.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a room number!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!Regex.IsMatch(tbPhoneNum.Text, @"^\d+$"))
+            {
+                MessageBox.Show("Please enter digits only!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                tbPhoneNum.Focus();
+            }
+            else if (!tbPhoneNum.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Phone number must contain digits only in phone number!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
             else
             {
@@ -87,9 +100,6 @@ namespace CurseWork
                 fAdmin fAdmin = new fAdmin(false);
                 fAdmin.Show();
             }
-        }
-        private void fAddBooking_Load(object sender, EventArgs e)
-        {
         }
     }
 }
