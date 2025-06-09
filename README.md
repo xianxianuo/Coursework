@@ -25,14 +25,18 @@ This application allows you to:
 - **Hotel** — hotel management, search, client operations, serialization
 - **Client** — stores client data (name, dates, room)
 - **Room** — stores room info (number, type, price, availability)
+- **Employee** — stores employee info (name, password, id)
 
 ### Forms (UI)
 
-- Add a hotel
-- Edit room and employee info
-- Admin menu
-- Add and search bookings
-- Login system
+- Add a hotel (fAddHotel);
+- End of set up (fEndOfSetUp);
+- Edit hotel lists information (fChangeInformation);
+- Menu (fAdmin);
+- Add bookings (fAddBooking);
+- Search bookings (fSearchBooking);
+- Login system (fLogIn);
+- Change hotel data (fChangeHotel).
 
 ## 🧪 Data Structure
 
